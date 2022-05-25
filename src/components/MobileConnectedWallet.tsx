@@ -8,6 +8,9 @@ import { useEnsName } from 'wagmi';
 import door from '../../public/assets/images/exit-door-white.svg';
 import MobileExternalLink from '../../public/assets/images/MobileExternalLink';
 import MobileCopyAddress from '../../public/assets/images/MobileCopyAddress';
+import { useXmtp } from 'hooks';
+import * as secp from '@noble/secp256k1';
+
 interface MobileConnectedWalletProps {
   address: string | undefined;
   onClickDisconnect: () => unknown;
@@ -16,10 +19,17 @@ interface MobileConnectedWalletProps {
 export default function MobileConnectedWallet(
   props: MobileConnectedWalletProps
 ) {
+  const { client } = useXmtp();
+
   const { data: ensName } = useEnsName({ address: props.address });
   const [isConnected, setIsConnected] = useState(false);
   const [isCopied, copyAddress] = useCopyAddress();
   const [currentUserEns, setCurrentUserEns] = useState<string | undefined>('');
+  const signature =
+    client &&
+    secp.utils.bytesToHex(
+      client?.keys?.preKeys[0]?.secp256k1?.bytes as Uint8Array
+    );
 
   //See notes under External Link for why this function exists
   function handleUrlClick() {
@@ -60,8 +70,19 @@ export default function MobileConnectedWallet(
       <Avatar size="large" address={props.address} />
       <Column>
         <Row>
-          <Address>{displayName}</Address>
+          <Address signature={signature}>
+            <span>Wallet Address: </span>
+            {displayName}
+          </Address>
         </Row>
+        {signature && (
+          <Row>
+            <Signature>
+              <span>Signature: </span>
+              {signature}
+            </Signature>
+          </Row>
+        )}
         <Row>
           {isConnected && (
             <LinkContainer>
@@ -120,12 +141,28 @@ const Container = styled.div<{ isLight?: boolean }>`
   }
 `;
 
-const Address = styled.h2`
+const Address = styled.h2<{ signature: string | null }>`
   font-style: normal;
   font-size: 1rem;
   line-height: 18px;
   letter-spacing: -0.01em;
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.dimmedPurple};
+  margin-bottom: ${({ signature }) => (signature ? '10px' : '0')};
+
+  & > span {
+    color: ${({ theme }) => theme.colors.white};
+  }
+`;
+
+const Signature = styled.h3`
+  font-size: 1rem;
+  line-height: 18px;
+  letter-spacing: -0.01em;
+  color: ${({ theme }) => theme.colors.dimmedPurple};
+  margin-right: 30px;
+  & > span {
+    color: ${({ theme }) => theme.colors.white};
+  }
 `;
 
 const Link = styled.span`
@@ -168,6 +205,7 @@ const ExternalLink = styled.a`
 const Column = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 const Row = styled.div`

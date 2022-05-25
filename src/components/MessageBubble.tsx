@@ -26,7 +26,7 @@ const TextWrapper = styled.div`
 
 const MessageText = styled.p`
   color: white;
-  font-family: 'Montserrat';
+  font-family: ${({ theme }) => theme.fontFamily.Montserrat};
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
