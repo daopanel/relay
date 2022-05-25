@@ -1,9 +1,8 @@
 import { useEnsAvatar } from 'wagmi';
-import Spinner from '../../public/assets/images/spinner.svg';
 import Image from 'next/image';
 import styled from 'styled-components';
 import Blockies from 'react-blockies';
-import LoadingSpinner from './LoadingSpinner'
+import LoadingSpinner from './LoadingSpinner';
 
 interface AvatarProps {
   address?: string | undefined;
@@ -16,10 +15,6 @@ export default function Avatar(props: AvatarProps) {
     isLoading,
   } = useEnsAvatar({ addressOrName: props.address });
 
-  if (isFetching || isLoading) {
-    return <LoadingSpinner width={40} height={40}  />;
-  }
-
   if (!ensAvatar) {
     return (
       <Blockies
@@ -29,6 +24,8 @@ export default function Avatar(props: AvatarProps) {
         className={'circle'}
       />
     );
+  } else if (isFetching || isLoading) {
+    return <LoadingSpinner width={40} height={40} />;
   } else {
     return (
       <AvatarImage

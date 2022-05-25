@@ -11,6 +11,7 @@
     "check": "next lint && next build && prettier --check ."
   },
   "dependencies": {
+    "@noble/secp256k1": "1.5.5",
     "@types/react-blockies": "^1.4.1",
     "@xmtp/xmtp-js": "^3.0.1",
     "copy-to-clipboard": "^3.3.1",
