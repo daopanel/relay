@@ -1,15 +1,17 @@
 import { useConnect } from 'wagmi';
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRedirect } from 'hooks';
 import MobileMessages from 'components/MobileMessages';
 
 export default function Page() {
   const { isConnected, isReconnecting } = useConnect();
-  const router = useRouter();
+  const { doRedirectAway } = useRedirect();
 
   useEffect(() => {
-    if (!isConnected && !isReconnecting) router.push('/');
-  }, [isConnected, isReconnecting, router]);
+    if (!isConnected && !isReconnecting) {
+      doRedirectAway && doRedirectAway('/');
+    }
+  }, [isConnected, isReconnecting, doRedirectAway]);
 
   return <MobileMessages />;
 }

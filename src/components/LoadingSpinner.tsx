@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Image from 'next/image';
 interface LoaderProps {
   height: number;
@@ -19,8 +19,17 @@ export default function Loader(props: LoaderProps) {
   );
 }
 
+const spin = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+
 const Container = styled.div<LoaderProps>`
-  animation: spin 1500ms linear infinite;
+  animation: ${spin} 1500ms linear infinite;
   width: max-content;
   height: max-content;
   display: flex;
@@ -28,13 +37,4 @@ const Container = styled.div<LoaderProps>`
   justify-content: center;
   background: transparent;
   border-radius: 50%;
-
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
 `;

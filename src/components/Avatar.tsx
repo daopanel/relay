@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useEnsAvatar } from 'wagmi';
 import Image from 'next/image';
 import styled from 'styled-components';
@@ -14,6 +15,15 @@ export default function Avatar(props: AvatarProps) {
     isFetching,
     isLoading,
   } = useEnsAvatar({ addressOrName: props.address });
+  const [showLoading, setShowLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    setShowLoading(isFetching || isLoading);
+  }, [isFetching, isLoading]);
+
+  if (showLoading) {
+    return <LoadingSpinner width={40} height={40} />;
+  }
 
   if (!ensAvatar) {
     return (

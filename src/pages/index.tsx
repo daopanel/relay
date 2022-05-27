@@ -10,17 +10,18 @@ import Metamask from '../../public/assets/images/Metamask.svg';
 import SignInLink from 'components/Connector';
 import { useIsMetaMask } from 'hooks';
 import { useEffect, useCallback, useState } from 'react';
-import { useRouter } from 'next/router';
 import MobileBetaStatus from 'components/MobileBetaStatus';
+import { useRedirect } from 'hooks';
+import { useRouter } from 'next/router';
 
 const highlight = '#9867ce';
 
 export default function Landing() {
-  const { disconnect } = useDisconnect();
-  const { connect, connectors, activeConnector, isConnected } = useConnect();
-  const [clickedConnect, setClickedConnect] = useState<boolean>(false);
   const router = useRouter();
+  const { connect, connectors, activeConnector, isConnected } = useConnect();
   const isMetaMask = useIsMetaMask();
+  const { doRedirectBack } = useRedirect();
+  const [userDidConnect, setUserDidConnect] = useState<boolean>(false);
 
   const metamaskConnector = connectors.find(
     (connector) => connector.id === 'injected'
@@ -35,23 +36,31 @@ export default function Landing() {
   );
 
   const handleClickMetamask = useCallback(() => {
+    setUserDidConnect(true);
     connect(metamaskConnector);
-    setClickedConnect(true);
   }, []);
 
   const handleClickCoinbase = useCallback(() => {
+    setUserDidConnect(true);
     connect(coinbaseConnector);
-    setClickedConnect(true);
   }, []);
 
   const handleClickWalletConnect = useCallback(() => {
+    setUserDidConnect(true);
     connect(walletConnectConnector);
-    setClickedConnect(true);
   }, []);
 
   useEffect(() => {
-    if (isConnected && clickedConnect) router.push('/conversations');
-  }, [isConnected, clickedConnect, router]);
+    if (isConnected) {
+      if (doRedirectBack) {
+        doRedirectBack();
+      } else {
+        if (userDidConnect) {
+          router.push('/conversations');
+        }
+      }
+    }
+  }, [isConnected, router]);
 
   return (
     <Page>
@@ -165,9 +174,9 @@ const Page = styled.div`
     background: linear-gradient(60deg, rgba(16, 8, 23, 92.5%), #100817);
     display: block;
     content: '';
-    height: 100vh;
+    height: 100%;
     width: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: -1;
