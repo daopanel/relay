@@ -1,3 +1,4 @@
+export * from './useRedirect';
 export * from './useXmtp';
 export * from './useXmtpConversation';
 export * from './useXmtpConversations';

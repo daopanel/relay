@@ -22,6 +22,7 @@ const TextWrapper = styled.div`
   border-radius: 8px;
   width: 100%;
   background-color: var(--background);
+  hyphens: auto;
 `;
 
 const MessageText = styled.p`
@@ -31,7 +32,7 @@ const MessageText = styled.p`
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
-  word-break: break-all;
+  word-break: break-word;
 `;
 
 export default MessageBubble;

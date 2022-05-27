@@ -8,7 +8,7 @@ export default function Page() {
   const router = useRouter();
 
   useEffect(() => {
-    if (!isConnected && !isReconnecting) router.push('/xmtp');
+    if (!isConnected && !isReconnecting) router.push('/');
   }, [isConnected, isReconnecting, router]);
 
   return <Conversations />;
