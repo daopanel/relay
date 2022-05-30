@@ -17,7 +17,7 @@ export const device = {
 // we'll need to merge them at some point
 // https://styled-components.com/docs/api#create-a-declarations-file
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const theme: DefaultTheme | any = {
+export const theme: DefaultTheme = {
   colors: {
     darkPurple: '#100817',
     deepPurple: '#271D47',

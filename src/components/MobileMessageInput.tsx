@@ -32,7 +32,7 @@ const MessageInput = ({ onSendMessage }: MessageInputProps) => {
     [handleSend]
   );
 
-  const inputTextCount = inputVal.length
+  const inputTextCount = inputVal.length;
 
   return (
     <Container>
@@ -53,9 +53,9 @@ const MessageInput = ({ onSendMessage }: MessageInputProps) => {
     </Container>
   );
 };
- interface StyleProps {
-   inputTextCount: number;
- }
+interface StyleProps {
+  inputTextCount: number;
+}
 
 const Container = styled.div`
   display: flex;

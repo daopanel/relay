@@ -7,10 +7,11 @@ extends:
   - plugin:react/recommended
   - plugin:@typescript-eslint/eslint-recommended
   - plugin:@typescript-eslint/recommended
-  - next
+  - next/core-web-vitals
 rules:
   react/jsx-uses-react: off
   react/react-in-jsx-scope: off
+  '@typescript-eslint/no-explicit-any': error
 settings:
   react:
     version: detect

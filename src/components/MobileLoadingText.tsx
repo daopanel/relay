@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export default function LoadingText() {
   return (
@@ -15,7 +15,7 @@ const LoadingCircleContainer = styled.div`
   align-items: center;
   gap: 5px;
   padding: 5px;
-`
+`;
 
 const LoadingCircle = styled.div`
   color: white;
@@ -33,13 +33,13 @@ const LoadingCircle = styled.div`
       transform: scale(1.1);
     }
     50% {
-      transform: scale(1)
+      transform: scale(1);
     }
     100% {
       transform: scale(1);
     }
   }
-`
+`;
 const LoadingCircle2 = styled.div`
   color: white;
   height: 5px;
@@ -56,13 +56,13 @@ const LoadingCircle2 = styled.div`
       transform: scale(0);
     }
     50% {
-      transform: scale(1.1)
+      transform: scale(1.1);
     }
     100% {
       transform: scale(1);
     }
   }
-`
+`;
 const LoadingCircle3 = styled.div`
   color: white;
   height: 5px;
@@ -79,10 +79,10 @@ const LoadingCircle3 = styled.div`
       transform: scale(0);
     }
     50% {
-      transform: scale(0)
+      transform: scale(0);
     }
     100% {
       transform: scale(1.1);
     }
   }
-`
+`;

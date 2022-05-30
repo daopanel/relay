@@ -25,8 +25,10 @@ export default function MobileMenu(props: MobileMenuProps) {
   const minSwipeDistance = 50;
 
   //Closes Slider window when clicked off of
+  /* eslint-disable-next-line */
   function useOutsideAlerter(ref: any) {
     useEffect(() => {
+      /* eslint-disable-next-line */
       function handleClickOutside(event: any) {
         if (ref.current && !ref.current.contains(event.target)) {
           props.onClickClose();
@@ -40,11 +42,13 @@ export default function MobileMenu(props: MobileMenuProps) {
   }
   useOutsideAlerter(slider);
 
+  /* eslint-disable-next-line */
   const onTouchStart = (e: any) => {
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
   };
 
+  /* eslint-disable-next-line */
   const onTouchMove = (e: any) => {
     setTouchEnd(e.targetTouches[0].clientX);
   };

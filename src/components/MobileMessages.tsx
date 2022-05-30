@@ -190,7 +190,7 @@ function getMessageBuckets(messages: Message[]): Array<Message[]> {
       }
 
       // We initialize the reducer with [[]] so buckets should always be non-empty.
-      const lastBucket = buckets[buckets.length -1] as Message[];
+      const lastBucket = buckets[buckets.length - 1] as Message[];
       if (lastBucket.length === 0) return [[message]];
 
       // If this is the initial iteration, initialize buckets.
@@ -202,7 +202,7 @@ function getMessageBuckets(messages: Message[]): Array<Message[]> {
       // If the last message in the last bucket is either sent to a different
       // address, undefined, sent is not set on it, or it's older than 5 minutes
       // from the current message, create a new bucket.
-      const lastInLastBucket = buckets[buckets.length -1]?.[0];
+      const lastInLastBucket = buckets[buckets.length - 1]?.[0];
       if (lastInLastBucket?.recipientAddress !== message.recipientAddress)
         return [...buckets, [message]];
       if (lastInLastBucket === undefined) return [...buckets, [message]];
@@ -214,7 +214,7 @@ function getMessageBuckets(messages: Message[]): Array<Message[]> {
       // If the first message in the last bucket is either undefined, sent is
       // not set on it, or it's older than an hour from the current message,
       // create a new bucket.
-      const firstInLastBucket = buckets[buckets.length-1]?.[0];
+      const firstInLastBucket = buckets[buckets.length - 1]?.[0];
       if (firstInLastBucket === undefined) return [...buckets, [message]];
       if (firstInLastBucket.sent === undefined) return [...buckets, [message]];
       if (isHourDifference(firstInLastBucket.sent, message.sent))

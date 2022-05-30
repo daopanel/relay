@@ -39,7 +39,7 @@ export default function CreateNewConversation(
   }, [props.close]);
 
   const handleClickAway = useCallback(
-    (event: any) => {
+    (event) => {
       if (!event.currentTarget.contains(event.relatedTarget)) {
         handleClose();
       }

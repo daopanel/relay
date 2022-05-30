@@ -10,17 +10,15 @@ interface ConnectorProps {
 }
 
 interface LogoProps {
-  defaultLogo?: any;
-  hoverLogo?: any
+  defaultLogo?: string;
+  hoverLogo?: string;
 }
 
 export default function Connector(props: ConnectorProps) {
   const { hoverLogo, defaultLogo, name } = props;
 
   return (
-    <Container
-      onClick={props.onClick}
-      hoverLogo={hoverLogo}>
+    <Container onClick={props.onClick} hoverLogo={hoverLogo}>
       <LogoContainer defaultLogo={defaultLogo} />
       <span>{name}</span>
       <ConnectStatus>
