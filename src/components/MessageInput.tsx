@@ -72,7 +72,7 @@ const StyledInput = styled.input`
   }
   color: white;
   font-size: 18px;
-  font-family: Inter;
+  font-family: ${({ theme }) => theme.fontFamily.Inter};
 `;
 
 export default MessageInput;

@@ -13,6 +13,7 @@ import {
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import { useEffect } from 'react';
 
 const alchemyKey = 'kmMb00nhQ0SWModX6lJLjXy_pVtiQnjx';
 
@@ -55,6 +56,35 @@ const wagmi = createClient({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
+  // checking for notifications at the Top Level
+  useEffect(() => {
+    const CheckForNotification = async () => {
+      if (!('Notification' in window)) {
+        alert('This browser does not support desktop notification');
+      } else {
+        if (Notification.permission === 'default') {
+          Notification.requestPermission()
+            .then(function (p) {
+              if (p === 'granted') {
+                // case when user has granted permission, after clicking on the notification
+              } else {
+                //case when user has denied permission, after clicking on the notification
+                console.log('User blocked notifications.');
+              }
+            })
+            .catch(function (err) {
+              console.error(err);
+            });
+        } else if (Notification.permission === 'granted') {
+          // Case when notification is already granted
+        } else {
+          // Case when notification is denied
+        }
+        // request permission from user
+      }
+    };
+    CheckForNotification();
+  }, []);
   return (
     <ThemeProvider theme={theme}>
       <WagmiProvider client={wagmi}>

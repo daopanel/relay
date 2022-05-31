@@ -34,6 +34,8 @@ export default function Avatar(props: AvatarProps) {
         className={'circle'}
       />
     );
+  } else if (isFetching || isLoading) {
+    return <LoadingSpinner width={40} height={40} />;
   } else {
     return (
       <AvatarImage
