@@ -100,6 +100,14 @@ export default function Landing() {
               onClick={handleClickCoinbase}
             />
           </MaybeHideOnMobileConnector>
+          <SignInLink
+            hoverLogo={LightCoinbase.src}
+            defaultLogo={coinbase.src}
+            name={'TEST SENTRY'}
+            onClick={() => {
+              throw new Error('Did Sentry see it?');
+            }}
+          />
         </ConnectorList>
       </MaxContentWidth>
       <MobileBetaStatus />
