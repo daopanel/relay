@@ -69,11 +69,11 @@ export default function Landing() {
   return (
     <Page>
       <MaxContentWidth>
-        <Headline>Hello.</Headline>
+        <Headline>Relay</Headline>
         <SubHeader>
-          from{' '}
+          web3 chat from{' '}
           <Wordmark href="https://daopanel.com" target="_blank">
-            daopanel
+            Panel
           </Wordmark>
         </SubHeader>
         <ConnectorList>
@@ -81,7 +81,7 @@ export default function Landing() {
             <Connector>
               <SignInLink
                 hoverLogo={Metamask.src}
-                defaultLogo={MetamaskPurple.src}
+                defaultLogo={Metamask.src}
                 name={'Metamask'}
                 onClick={handleClickMetamask}
               />
@@ -90,7 +90,7 @@ export default function Landing() {
           <MaybeHideOnMobileConnector shouldHide={isMetaMask}>
             <SignInLink
               hoverLogo={LightWalletConnect.src}
-              defaultLogo={walletConnect.src}
+              defaultLogo={LightWalletConnect.src}
               name={'Wallet Connect'}
               onClick={handleClickWalletConnect}
             />
@@ -98,7 +98,7 @@ export default function Landing() {
           <MaybeHideOnMobileConnector shouldHide={isMetaMask}>
             <SignInLink
               hoverLogo={LightCoinbase.src}
-              defaultLogo={coinbase.src}
+              defaultLogo={LightCoinbase.src}
               name={'Coinbase'}
               onClick={handleClickCoinbase}
             />
@@ -196,13 +196,13 @@ const Page = styled.div`
 
 const SubHeader = styled.h2`
   margin-left: -1rem;
-  margin-top: -2rem;
+  margin-top: -1rem;
   font-style: normal;
   font-weight: 300;
   font-size: 16.8834px;
   line-height: 23px;
   text-align: center;
-  color: #dad0e6;
+  color: white;
   margin-bottom: 3rem;
 `;
 

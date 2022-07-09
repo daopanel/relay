@@ -132,7 +132,7 @@ const Link = styled.span`
   font-weight: 400;
   font-size: 12px;
   line-height: 16px;
-  color: #9486aa;
+  color: white;
   display: flex;
   gap: 9px;
   cursor: pointer;

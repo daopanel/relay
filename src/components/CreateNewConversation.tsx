@@ -104,15 +104,16 @@ const UserInput = styled.input`
   font-family: ${({ theme }) => theme.fontFamily.Montserrat};
   font-weight: bold;
   border: none;
-  font-size: 24px;
+  font-size: 1.4rem;
   background: transparent;
   color: white;
   order: 3;
-  width: 100%;
+  min-width: 100%;
+  border-bottom: 2px solid white;
 
   ::placeholder {
-    color: #dad0e5;
-    font-size: 1rem;
+    color: #c7c2c2;
+    font-size: 1.45rem;
   }
 
   &:focus {

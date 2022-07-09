@@ -53,7 +53,7 @@ const SentAt = styled.time`
   display: flex;
   align-items: center;
   letter-spacing: -0.01em;
-  color: #75668c;
+  color: white;
 `;
 
 // This function can be used as a standard for shorthands throughout the app(can be moved in 'utils' folder)

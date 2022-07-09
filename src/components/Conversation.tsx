@@ -131,7 +131,7 @@ const StyledSubTitle = styled(Text)`
 
 const StyledText = styled(Text)<{ isRequest: boolean }>`
   color: ${({ theme, isRequest }) =>
-    isRequest ? theme.colors.lightPurple : theme.colors.dimmedPurple};
+    isRequest ? theme.colors.lightPurple : theme.colors.white};
   font-size: 14px;
   font-weight: 400;
   line-height: 17px;

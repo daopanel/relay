@@ -36,13 +36,13 @@ export default function MobileConnect() {
 
   return (
     <Page>
-      <Headline>Hello.</Headline>
-      <SubHeader>by daopanel</SubHeader>
+      <Headline>Relay</Headline>
+      <SubHeader>by Panel</SubHeader>
       <ConnectorList height={height}>
         <Connector>
           <SignInLink
             hoverLogo={Metamask.src}
-            defaultLogo={MetamaskPurple.src}
+            defaultLogo={Metamask.src}
             name={'Metamask'}
             onClick={isConnected ? disconnect : handleConnect}
           />
@@ -50,7 +50,7 @@ export default function MobileConnect() {
         <Connector>
           <SignInLink
             hoverLogo={LightWalletConnect.src}
-            defaultLogo={walletConnect.src}
+            defaultLogo={LightWalletConnect.src}
             name={'Wallet Connect'}
             onClick={() => connect(connectors[0])}
           />
@@ -58,7 +58,7 @@ export default function MobileConnect() {
         <Connector>
           <SignInLink
             hoverLogo={LightPortis.src}
-            defaultLogo={portis.src}
+            defaultLogo={LightPortis.src}
             name={'Portis'}
             onClick={() => connect(connectors[0])}
           />
@@ -66,7 +66,7 @@ export default function MobileConnect() {
         <Connector>
           <SignInLink
             hoverLogo={LightTorus.src}
-            defaultLogo={torus.src}
+            defaultLogo={LightTorus.src}
             name={'Torus'}
             onClick={() => connect(connectors[0])}
           />
@@ -74,7 +74,7 @@ export default function MobileConnect() {
         <Connector>
           <SignInLink
             hoverLogo={LightFormatic.src}
-            defaultLogo={fortmatic.src}
+            defaultLogo={LightFormatic.src}
             name={'Fortmatic'}
             onClick={() => connect(connectors[0])}
           />

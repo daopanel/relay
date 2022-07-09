@@ -67,6 +67,7 @@ const Container = styled.div`
   height: 68px;
   padding-left: 20px;
   padding-right: 20px;
+  padding-bottom: 24px;
   gap: 20px;
 
   @media (max-width: 335px) {
@@ -79,13 +80,16 @@ const StyledInput = styled.input`
   flex: 1;
   border-radius: 2px;
   background-color: transparent;
+  padding: 1rem 0.4rem;
   border: none;
+  border-radius: 8px;
   outline: none;
+  background-color: #504670;
   &::placeholder {
-    color: #75668c;
+    color: #ffffffa9;
     font-weight: 400;
   }
-  color: white;
+  color: #ffffff;
   font-size: 18px;
 `;
 

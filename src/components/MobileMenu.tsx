@@ -77,7 +77,7 @@ export default function MobileMenu({
       ref={slider}>
       <MobileBetaStatus />
       <Header>
-        <WordMark>Hello.</WordMark>
+        <WordMark>Relay</WordMark>
         <ClickableImage
           src="/assets/images/ArrowLeftWhite.svg"
           height={20}
@@ -219,7 +219,7 @@ const SecondaryText = styled.h3`
   display: flex;
   align-items: center;
   letter-spacing: -0.01em;
-  color: #75668c;
+  color: white;
 `;
 
 const Header = styled.div`
