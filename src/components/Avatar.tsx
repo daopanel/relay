@@ -27,7 +27,7 @@ export default function Avatar(props: AvatarProps) {
   if (!ensAvatar) {
     return (
       <Blockies
-        seed={props.address || ''}
+        seed={props.address?.toLowerCase() || ''}
         size={10}
         scale={4}
         className={'circle'}

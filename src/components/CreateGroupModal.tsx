@@ -86,9 +86,6 @@ export const CreateGroupModal: FunctionComponent<CreateGroupModalProps> = ({
           />
         </ModalFormItem>
       </ModalForm>
-      {peerAddresses.size > 0 || (
-        <AtLeastOneAddress>Enter at least one address...</AtLeastOneAddress>
-      )}
 
       {peerAddresses.size > 0 && (
         <AddressesList>
@@ -123,21 +120,9 @@ export const CreateGroupModal: FunctionComponent<CreateGroupModalProps> = ({
   );
 };
 
-const AtLeastOneAddress = styled.h2`
-  display: flex;
-  flex-grow: 1;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  width: 100%;
-  text-align: center;
-  min-height: 23vh;
-`;
-
 const AddressesList = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 23vh;
   max-height: 50vh;
   overflow-y: scroll;
 `;

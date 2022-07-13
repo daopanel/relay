@@ -3,6 +3,7 @@ export * from './useRouterEnsData';
 export * from './useWindowSize';
 export * from './useIsMetaMask';
 export * from './useMetrics';
+export * from './useResponsiveUserId';
 
 import useActiveTab from './useActiveTab';
 import usePreviousVal from './usePreviousVal';

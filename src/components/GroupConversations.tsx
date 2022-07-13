@@ -44,7 +44,7 @@ export default function GroupConversations() {
           peerAddresses,
           `Created at datetime: ${new Date()}`
         );
-        router.push('/g' + groupId);
+        router.push('/g/' + groupId);
       } catch (err) {
         console.error(err);
       }
@@ -64,7 +64,7 @@ export default function GroupConversations() {
       <MobileConversationsHeader
         onClickMenu={doOpenMenu}
         onClickNewConversation={doNewConversation}
-        activeCategory={'All Messages'}
+        activeCategory={'Messages'}
       />
       {xmtp.status === Status.idle && (
         <Centered>

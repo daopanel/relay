@@ -5,7 +5,7 @@ import MirrorWhite from '../../public/assets/images/mirror-white.png';
 
 export default function MobileBetaStatus() {
   return (
-    <BottomRight>
+    <Wrapper>
       <a href="https://www.daopanel.com/" target="_blank" rel="noreferrer">
         <Image
           src="/assets/images/whiteonly.png"
@@ -28,7 +28,7 @@ export default function MobileBetaStatus() {
       <PublicBeta href="https://docs.xmtp.org/" target="_blank">
         public beta
       </PublicBeta>
-    </BottomRight>
+    </Wrapper>
   );
 }
 
@@ -53,15 +53,12 @@ const PublicBeta = styled.a`
   margin-left: 10px;
 `;
 
-const BottomRight = styled.div`
-  position: absolute;
-  bottom: 24px;
-  right: 24px;
+const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
+
   & > a {
-    margin-right: 10px;
+    margin-right: 0.5rem;
   }
 `;

@@ -4,10 +4,11 @@ import React from 'react';
 import Image from 'next/image';
 import styled from 'styled-components';
 import Avatar from './Avatar';
-import { useEnsName } from 'wagmi';
+import { useConnect, useEnsName } from 'wagmi';
 import door from '../../public/assets/images/exit-door-white.svg';
 import MobileExternalLink from '../../public/assets/images/MobileExternalLink';
 import MobileCopyAddress from '../../public/assets/images/MobileCopyAddress';
+import { useResponsiveUserId } from 'hooks';
 interface MobileConnectedWalletProps {
   address: string | undefined;
   onClickDisconnect: () => unknown;
@@ -17,32 +18,17 @@ export default function MobileConnectedWallet(
   props: MobileConnectedWalletProps
 ) {
   const { data: ensName } = useEnsName({ address: props.address });
-  const [isConnected, setIsConnected] = useState(false);
+  const { isConnected } = useConnect();
   const [isCopied, copyAddress] = useCopyAddress();
-  const [currentUserEns, setCurrentUserEns] = useState<string | undefined>('');
-
-  //See notes under External Link for why this function exists
-  function handleUrlClick() {
-    setCurrentUserEns(props.address);
-  }
+  const responsiveId = useResponsiveUserId(
+    ensName,
+    props.address,
+    'Please connect your wallet...'
+  );
 
   function handleClick(e: string | undefined) {
     copyAddress(e || '');
   }
-
-  const displayName = useMemo(() => {
-    if (ensName) {
-      setIsConnected(true);
-      return shortAddress(ensName);
-    }
-    if (props.address) {
-      setIsConnected(true);
-      return shortAddress(props.address);
-    } else {
-      setIsConnected(false);
-      return 'Please connect your wallet...';
-    }
-  }, [ensName, props.address]);
 
   return (
     <Container isLight={props.isLight}>
@@ -60,7 +46,7 @@ export default function MobileConnectedWallet(
       <Avatar size="large" address={props.address} />
       <Column>
         <Row>
-          <Address>{displayName}</Address>
+          <Address>{responsiveId}</Address>
         </Row>
         <Row>
           {isConnected && (
@@ -70,10 +56,7 @@ export default function MobileConnectedWallet(
                 {isCopied ? 'Copied' : 'Copy Address'}
               </Link>
               <ExternalLink
-                // I had to put this click event on the link to get updated state for the users
-                //ETH address. It was turning to undefined after page refresh and breaking the link
-                onClick={handleUrlClick}
-                href={`https://etherscan.io/address/${currentUserEns}`}
+                href={`https://etherscan.io/address/${props.address}`}
                 target="_blank"
                 rel="noreferrer">
                 <Link>

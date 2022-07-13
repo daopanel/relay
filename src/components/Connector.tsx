@@ -48,7 +48,7 @@ const Container = styled.div<LogoProps>`
   transition: 200ms;
   -webkit-transition: background-image 200ms;
   transition: gap 400ms;
-  
+
   &:hover {
     background: #2f2042;
     gap: 1.5rem;

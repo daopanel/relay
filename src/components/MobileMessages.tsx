@@ -1,4 +1,9 @@
-import { useActiveTab, usePreviousVal, useDeviceDetect } from 'hooks';
+import {
+  useActiveTab,
+  usePreviousVal,
+  useDeviceDetect,
+  useResponsiveUserId,
+} from 'hooks';
 import { useCallback, useRef, useState } from 'react';
 import styled from 'styled-components';
 import MobileMessagesHeader from './MobileMessagesHeader';
@@ -17,7 +22,6 @@ import {
 import MobileStatusCard from './MobileStatusCard';
 import { useRouterEnsData } from 'hooks';
 import MobileLoadingEnsName from './MobileLoadingEnsName';
-import background from '../../public/assets/images/Artboard1.png';
 
 export default function Messages() {
   const { isMobile } = useDeviceDetect();
@@ -35,6 +39,7 @@ export default function Messages() {
   // const prevMessagesCount = usePreviousVal(messages.length);
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const divScrollToRef = useRef<HTMLInputElement>(null);
+  const responsiveId = useResponsiveUserId(peerEnsName, peerAddress, 'N/A');
 
   const openMenu = useCallback(() => setShowMenu(true), [setShowMenu]);
   const closeMenu = useCallback(() => setShowMenu(false), [setShowMenu]);
@@ -101,7 +106,7 @@ export default function Messages() {
         <MobileMessagesHeader
           onMenuClick={openMenu}
           onClickBack={goToConversations}
-          titleText={peerEnsName || peerAddress || 'N/A'}
+          titleText={responsiveId}
         />
         <MobileLoadingEnsName />;
       </>
@@ -113,7 +118,7 @@ export default function Messages() {
         <MobileMessagesHeader
           onClickBack={goToConversations}
           onMenuClick={openMenu}
-          titleText={peerEnsName || peerAddress || 'N/A'}
+          titleText={'N/A'}
         />
         <Centered>
           <MobileStatusCard
@@ -136,7 +141,7 @@ export default function Messages() {
       <MobileMessagesHeader
         onClickBack={goToConversations}
         onMenuClick={openMenu}
-        titleText={peerEnsName || peerAddress || 'N/A'}
+        titleText={responsiveId}
       />
       {/* {status === ConversationStatus.noPeerAvailable && (
         <Centered>
@@ -207,7 +212,7 @@ export default function Messages() {
                 <MobileMessagesBucket
                   key={index}
                   messages={bucketMessages}
-                  peerAddress={peerAddress}
+                  clientAddress={xmtp.client.address}
                   startDate={bucketMessages[0].sent}
                   sentByAddress={bucketMessages[0].senderAddress}
                 />

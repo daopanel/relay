@@ -71,7 +71,7 @@ export default function Conversations() {
       <MobileConversationsHeader
         onClickMenu={doOpenMenu}
         onClickNewConversation={doNewConversation}
-        activeCategory={'All Messages'}
+        activeCategory={'Messages'}
       />
       {showNewConversation && (
         <CreateNewConversation close={doCloseCloseNewConversation} />

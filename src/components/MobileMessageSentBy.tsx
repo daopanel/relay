@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Avatar from './Avatar';
 import { useEnsName } from 'wagmi';
 import { shortDate } from 'utils/date';
+import { useResponsiveUserId } from 'hooks';
 
 export interface MobileMessageSentByProps {
   address: string;
@@ -11,13 +12,12 @@ export interface MobileMessageSentByProps {
 
 export default function MobileMessageSentBy(props: MobileMessageSentByProps) {
   const { data: ensName } = useEnsName({ address: props.address });
+  const responsiveId = useResponsiveUserId(ensName, props.address, '');
   return (
     <Aligned>
       {props.sentByMe || <Avatar address={props.address} />}
       {props.sentByMe && <SentAt>{shortDate(props.sentAt)}</SentAt>}
-      <SentBy>
-        {props.sentByMe ? 'You' : shortAddress(ensName || props.address)}
-      </SentBy>
+      <SentBy>{props.sentByMe ? 'You' : responsiveId}</SentBy>
       {props.sentByMe && <Avatar address={props.address} />}
       {props.sentByMe || <SentAt>{shortDate(props.sentAt)}</SentAt>}
     </Aligned>
@@ -55,8 +55,3 @@ const SentAt = styled.time`
   letter-spacing: -0.01em;
   color: white;
 `;
-
-// This function can be used as a standard for shorthands throughout the app(can be moved in 'utils' folder)
-function shortAddress(str: string): string {
-  return str.length < 15 ? str : str.slice(0, 15) + '...';
-}

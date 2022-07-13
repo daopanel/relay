@@ -5,14 +5,14 @@ import MobileMessageSentBy from './MobileMessageSentBy';
 import { isGroupMessage } from 'xmtp-react/groups';
 
 interface MobileMessagesBucketProps {
-  peerAddress: string;
+  clientAddress: string;
   sentByAddress: string | undefined;
   startDate: Date | undefined;
   messages: Message[];
 }
 
 export default function MobileMessagesBucket(props: MobileMessagesBucketProps) {
-  const sentByMe = props.sentByAddress !== props.peerAddress;
+  const sentByMe = props.sentByAddress === props.clientAddress;
   if (props.messages.length === 0) return null;
 
   return (

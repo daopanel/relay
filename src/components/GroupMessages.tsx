@@ -101,9 +101,9 @@ export const GroupMessages: FunctionComponent = () => {
                 <MobileMessagesBucket
                   key={index}
                   messages={bucketMessages}
-                  peerAddress={xmtp.client.address}
-                  startDate={bucketMessages[0].sent}
+                  clientAddress={xmtp.client.address}
                   sentByAddress={bucketMessages[0].senderAddress}
+                  startDate={bucketMessages[0].sent}
                 />
               );
             }

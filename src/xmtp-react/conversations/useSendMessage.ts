@@ -26,8 +26,9 @@ export const useSendMessage = () => {
     } else {
       return {
         status: Status.ready,
-        send: (peerAddress: string, content: string) =>
-          xmtp.client.sendMessage(peerAddress, content),
+        send: async (peerAddress: string, content: string) => {
+          return await xmtp.client.sendMessage(peerAddress, content);
+        },
       };
     }
   }, [xmtp]);

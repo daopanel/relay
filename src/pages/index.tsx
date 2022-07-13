@@ -9,7 +9,7 @@ import MetamaskPurple from '../../public/assets/images/MetamaskPurple.svg';
 import Metamask from '../../public/assets/images/Metamask.svg';
 import SignInLink from 'components/Connector';
 import { useIsMetaMask } from 'hooks';
-import { useEffect, useCallback, useState } from 'react';
+import { useEffect, useCallback } from 'react';
 import MobileBetaStatus from 'components/MobileBetaStatus';
 import { useRedirect } from 'hooks';
 import { useRouter } from 'next/router';
@@ -21,7 +21,6 @@ export default function Landing() {
   const { connect, connectors, isConnected } = useConnect();
   const isMetaMask = useIsMetaMask();
   const { doRedirectBack } = useRedirect();
-  const [userDidConnect, setUserDidConnect] = useState<boolean>(false);
 
   const metamaskConnector = connectors.find(
     (connector) => connector.id === 'injected'
@@ -36,19 +35,16 @@ export default function Landing() {
   );
 
   const handleClickMetamask = useCallback(() => {
-    setUserDidConnect(true);
     connect(metamaskConnector);
     /* eslint-disable-next-line */
   }, []);
 
   const handleClickCoinbase = useCallback(() => {
-    setUserDidConnect(true);
     connect(coinbaseConnector);
     /* eslint-disable-next-line */
   }, []);
 
   const handleClickWalletConnect = useCallback(() => {
-    setUserDidConnect(true);
     connect(walletConnectConnector);
     /* eslint-disable-next-line */
   }, []);
@@ -58,9 +54,7 @@ export default function Landing() {
       if (doRedirectBack) {
         doRedirectBack();
       } else {
-        if (userDidConnect) {
-          router.push('/conversations');
-        }
+        router.push('/conversations');
       }
     }
     /* eslint-disable-next-line */
@@ -105,10 +99,20 @@ export default function Landing() {
           </MaybeHideOnMobileConnector>
         </ConnectorList>
       </MaxContentWidth>
-      <MobileBetaStatus />
+      <BottomRight>
+        <MobileBetaStatus />
+      </BottomRight>
     </Page>
   );
 }
+
+const BottomRight = styled.div`
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 1rem;
+`;
+
 const MaxContentWidth = styled.div`
   max-width: 600px;
   width: 100%;

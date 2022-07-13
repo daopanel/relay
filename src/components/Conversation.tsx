@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import styled from 'styled-components';
 import { useEnsName } from 'wagmi';
 import Text from './Text';
@@ -7,6 +7,7 @@ import Avatar from './Avatar';
 import MobileLoadingText from 'components/MobileLoadingText';
 import { shortDate } from 'utils/date';
 import { useMessages, getLastMessage } from 'xmtp-react/conversations';
+import { useResponsiveUserId } from 'hooks';
 
 interface ConversationProps {
   peerAddress: string;
@@ -17,7 +18,7 @@ export default function Conversation(props: ConversationProps) {
   const { data: ensName, isLoading } = useEnsName({
     address: props.peerAddress,
   });
-  // const prevMessagesCount = usePreviousVal(messages.length);
+  const responsiveId = useResponsiveUserId(ensName, props.peerAddress, '');
   const lastMessage = getLastMessage(messages);
   const router = useRouter();
 
@@ -33,12 +34,7 @@ export default function Conversation(props: ConversationProps) {
         </div>
         <div>
           {isLoading && <MobileLoadingText />}
-          {isLoading || (
-            <StyledTitle
-              tag="span"
-              text={ensName ? ensName : shortAddress(props.peerAddress)}
-            />
-          )}
+          {isLoading || <StyledTitle tag="span" text={responsiveId} />}
           {lastMessage === undefined ? (
             <MobileLoadingText />
           ) : (
@@ -139,10 +135,6 @@ const StyledText = styled(Text)<{ isRequest: boolean }>`
   margin-left: 6px;
   margin-bottom: ${({ isRequest }) => (isRequest ? '0' : '5px')};
 `;
-
-function shortAddress(str: string): string {
-  return str.slice(0, 6) + '...' + str.slice(-4);
-}
 
 function previewMessage(message: string): string {
   if (message.length < 50) return message;

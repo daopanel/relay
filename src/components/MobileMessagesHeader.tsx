@@ -25,9 +25,7 @@ export default function MobileMessagesHeader({
         onClick={onMenuClick}
       />
       {isCopied || (
-        <UserDisplay onClick={() => doCopy(titleText)}>
-          {shortAddress(titleText)}
-        </UserDisplay>
+        <UserDisplay onClick={() => doCopy(titleText)}>{titleText}</UserDisplay>
       )}
       {isCopied && <Copied>Copied!</Copied>}
       <GoBack
