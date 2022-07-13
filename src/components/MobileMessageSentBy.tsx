@@ -53,5 +53,5 @@ const SentAt = styled.time`
   display: flex;
   align-items: center;
   letter-spacing: -0.01em;
-  color: white;
+  color: #75668c;
 `;

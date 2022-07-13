@@ -83,11 +83,15 @@ const StyledInput = styled.input`
   border: none;
   border-radius: 8px;
   outline: none;
-  background-color: #504670;
+  /* background-color: #504670; */
+  border: 2px solid rgb(255, 255, 255, 0.8);
+  padding-left: 1.5rem;
+
   &::placeholder {
     color: #ffffffa9;
     font-weight: 400;
   }
+
   color: #ffffff;
   font-size: 18px;
 `;
