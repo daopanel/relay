@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import MobileMenu from '../../public/assets/images/MobileWhiteHamburgerMenu.svg';
-import NewConversation from '../../public/assets/images/MobileNewConversation.svg';
+import MobileMenu from '../../public/assets/images/MobileDarkHamburgerMenu.svg';
+import NewConversation from '../../public/assets/images/MobileNewConversationDark.svg';
 import Image from 'next/image';
 import MobileFixedHeader from './MobileFixedHeader';
 
@@ -35,7 +35,7 @@ export default function MobileConversationsHeader(
 }
 
 const ActiveCategory = styled.h1`
-  color: white;
+  color: #252727;
   font-style: normal;
   font-weight: 700;
   font-size: 16px;

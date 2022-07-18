@@ -243,6 +243,7 @@ const Page = styled.div`
   display: flex;
   flex-direction: column;
   background: #100817;
+  background: white;
   position: fixed;
   top: 0;
   left: 0;
@@ -267,7 +268,6 @@ const FixedFooter = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  border-top: 2px solid #191027;
   background-color: ${({ theme }) => theme.colors.darkPurple};
 `;
 

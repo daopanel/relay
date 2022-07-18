@@ -71,7 +71,7 @@ const Right = styled.div`
 const Card = styled.div`
   max-width: 456px;
   border-radius: 8px;
-  background-color: #100817;
+  background-color: white;
   border: 2px solid #402b5b;
   padding: 24px;
   position: relative;
@@ -84,7 +84,7 @@ const Title = styled.h1`
   font-size: 18px;
   line-height: 20px;
   letter-spacing: -0.01em;
-  color: #ffffff;
+  color: #252727;
 `;
 
 const Subtitle = styled.h6`
@@ -95,7 +95,7 @@ const Subtitle = styled.h6`
   line-height: 24px;
   align-items: center;
   letter-spacing: -0.01em;
-  color: #dad0e6;
+  color: #252727;
 `;
 
 const ReferSubtitle = styled.div`

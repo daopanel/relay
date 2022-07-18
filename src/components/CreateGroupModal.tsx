@@ -86,7 +86,6 @@ export const CreateGroupModal: FunctionComponent<CreateGroupModalProps> = ({
           />
         </ModalFormItem>
       </ModalForm>
-
       {peerAddresses.size > 0 && (
         <AddressesList>
           {Array.from(peerAddresses)
@@ -142,7 +141,7 @@ const ModalStyle = styled.div`
   padding: 24px;
   position: relative;
   width: 467px;
-  background: #100817;
+  background: white;
   border: 2px solid #402b5b;
   border-radius: 8px;
 `;
@@ -171,7 +170,7 @@ const ModalTitle = styled.h3`
   font-weight: 700;
   font-size: 1rem;
   line-height: 24px;
-  color: #ffffff;
+  color: #252727;
   margin-left: auto;
 `;
 
@@ -190,7 +189,7 @@ const ModalFormItem = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 3rem;
-  background: rgba(23, 15, 38, 0.5);
+  border: 2px solid #271d47;
   border-radius: 8px;
   margin: 12px 0;
   margin-bottom: 12px;
@@ -202,7 +201,7 @@ const AddAddressInput = styled.input`
   outline: none;
   border: none;
   background: none;
-  color: #75668c;
+  color: #252727;
   font-size: 14px;
   width: 100%;
   cursor: pointer;
@@ -218,13 +217,13 @@ const ModalFormTitle = styled.h1`
   line-height: 16px;
   letter-spacing: -0.01em;
   text-transform: uppercase;
-  color: #75668c;
+  color: #252727;
   margin-top: 24px;
   margin-bottom: 12px;
 `;
 
 const AddressItem = styled.h6`
-  color: #75668c;
+  color: #252727;
   font-size: 14px;
 `;
 
@@ -252,6 +251,7 @@ const ModalButton = styled.button`
 const ModalCancel = styled(ModalButton)`
   background: none;
   border: 2px solid #1c1026;
+  color: #252727;
 `;
 
 const Buttons = styled.div`

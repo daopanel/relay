@@ -1,10 +1,8 @@
 import styled from 'styled-components';
-import background from '../../public/assets/images/Artboard1.png';
 
 export default function MobileLoadingConversations() {
   return (
     <MainContainer>
-      <Background></Background>
       <Header>Loading XMTP Conversations</Header>
       <DotContainer>
         <Dot></Dot>
@@ -20,34 +18,8 @@ export default function MobileLoadingConversations() {
 }
 
 const RefreshIfSlow = styled.h3`
-  color: #dad0e6;
+  color: #252727;
   margin-top: 3rem;
-`;
-
-const Background = styled.div`
-  width: 100vw;
-  height: calc(100vh - 96px);
-  margin-top: 96px;
-  background: url(${background.src}) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  object-fit: cover;
-  position: fixed;
-  z-index: -1;
-
-  &:after {
-    background: linear-gradient(60deg, rgba(16, 8, 23, 92.5%), #100817);
-    display: block;
-    content: '';
-    height: 100vh;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
 `;
 
 const MainContainer = styled.div`
@@ -61,7 +33,11 @@ const MainContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 3px;
-  z-index: -100;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Header = styled.h1`
@@ -76,7 +52,6 @@ const Header = styled.h1`
 const Dot = styled.div`
   height: 10px;
   width: 10px;
-  background: red;
   border-radius: 50%;
 `;
 

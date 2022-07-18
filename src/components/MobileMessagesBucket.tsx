@@ -26,7 +26,8 @@ export default function MobileMessagesBucket(props: MobileMessagesBucketProps) {
                   ? message.content.payload
                   : message.content
               }
-              backgroundColor={sentByMe ? '#50456f' : '#231A3A'}
+              backgroundColor={sentByMe ? '#5A46C6' : '#EBEAEA'}
+              color={sentByMe ? 'white' : 'black'}
             />
           </MessagePosition>
         );

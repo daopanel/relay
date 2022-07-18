@@ -46,7 +46,7 @@ const ComingSoon = ({ text }: ComingSoonProps) => {
 const Page = styled.div`
   height: 100%;
   width: 100vw;
-  background: #100817;
+  background: white;
   display: flex;
   flex-direction: column;
 `;

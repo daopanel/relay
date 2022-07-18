@@ -99,7 +99,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 	display: block;
 }
 body {
-  background: #100817;
+  background: white;
   line-height: 1;
   overflow-y: hidden;
 }

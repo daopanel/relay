@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import ArrowLeftWhite from '../../public/assets/images/ArrowLeftWhite.svg';
+import ArrowLeftWhite from '../../public/assets/images/ArrowLeftDark.svg';
 import MobileFixedHeader from './MobileFixedHeader';
 import Image from 'next/image';
 import useCopyClipboard from 'hooks/useCopyClipboard';
-
 interface MobileMessageHeaderProps {
   titleText: string;
   onMenuClick: () => unknown;
@@ -21,7 +20,7 @@ export default function MobileMessagesHeader({
       <Menu
         width={30}
         height={30}
-        src={'/assets/images/MobileWhiteHamburgerMenu.svg'}
+        src={'/assets/images/MobileDarkHamburgerMenu.svg'}
         onClick={onMenuClick}
       />
       {isCopied || (
@@ -47,11 +46,13 @@ const UserDisplay = styled.h1`
   align-items: center;
   letter-spacing: -0.01em;
   color: #ffffff;
+  color: #252727;
   flex: none;
   order: 0;
   flex-grow: 0;
   margin: 0px 16px;
   cursor: pointer;
+  
   :hover {
     margin-bottom: 4px;
   }

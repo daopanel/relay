@@ -3,13 +3,16 @@ import styled, { CSSProperties } from 'styled-components';
 interface TextBubbleProps {
   message: string;
   backgroundColor: string;
+  color: string;
 }
 
 const MessageBubble = (props: TextBubbleProps) => {
   return (
     <TextWrapper
       style={{ '--background': props.backgroundColor } as CSSProperties}>
-      <MessageText>{props.message}</MessageText>
+      <MessageText style={{ '--color': props.color } as CSSProperties}>
+        {props.message}
+      </MessageText>
     </TextWrapper>
   );
 };
@@ -26,8 +29,8 @@ const TextWrapper = styled.div`
 `;
 
 const MessageText = styled.p`
-  color: white;
   font-family: ${({ theme }) => theme.fontFamily.Montserrat};
+  color: var(--color);
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
