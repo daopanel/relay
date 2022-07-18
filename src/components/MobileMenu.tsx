@@ -78,7 +78,7 @@ export default function MobileMenu({
       <Header>
         <MobileBetaStatus />
         <ClickableImage
-          src="/assets/images/ArrowLeftDark.svg"
+          src="/assets/images/ArrowLeftWhite.svg"
           height={20}
           width={20}
           alt="close"
