@@ -52,7 +52,7 @@ const UserDisplay = styled.h1`
   flex-grow: 0;
   margin: 0px 16px;
   cursor: pointer;
-  
+
   :hover {
     margin-bottom: 4px;
   }
