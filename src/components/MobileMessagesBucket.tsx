@@ -28,6 +28,9 @@ export default function MobileMessagesBucket(props: MobileMessagesBucketProps) {
               }
               backgroundColor={sentByMe ? '#5A46C6' : '#EBEAEA'}
               color={sentByMe ? 'white' : 'black'}
+              borderBottomRightRadius={sentByMe ? 'none' : '8px'}
+              borderBottomLeftRadius={sentByMe ? '8px' : 'none'}
+              dateColor={sentByMe ? '#E2E2E2' : '#000'}
             />
           </MessagePosition>
         );

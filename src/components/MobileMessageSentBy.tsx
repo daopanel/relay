@@ -16,9 +16,6 @@ export default function MobileMessageSentBy(props: MobileMessageSentByProps) {
   return (
     <Aligned>
       {props.sentByMe || <Avatar address={props.address} />}
-      {props.sentByMe && <SentAt>{shortDate(props.sentAt)}</SentAt>}
-      <SentBy>{props.sentByMe ? 'You' : responsiveId}</SentBy>
-      {props.sentByMe && <Avatar address={props.address} />}
       {props.sentByMe || <SentAt>{shortDate(props.sentAt)}</SentAt>}
     </Aligned>
   );
