@@ -121,18 +121,10 @@ const Link = styled.span`
   :first-child > :first-child {
     stroke: white;
   }
-  &:hover {
-    color: white;
-  }
   > :first-child > :first-child,
   > :first-child > :nth-child(2),
   > :first-child > :nth-child(3) {
     transition: stroke 200ms ease-in-out;
-  }
-  &:hover > :first-child > :first-child,
-  &:hover > :first-child > :nth-child(2),
-  &:hover > :first-child > :nth-child(3) {
-    stroke: white;
   }
   //End SVG Styling
 `;
