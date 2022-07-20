@@ -13,7 +13,7 @@ import MobileBetaStatus from 'components/MobileBetaStatus';
 import { useRedirect } from 'hooks';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import PanelLogo from '../../public/assets/images/PanelLogo.png'
+import PanelLogo from '../../public/assets/images/PanelLogo.png';
 
 const highlight = '#7349e5';
 
@@ -180,10 +180,10 @@ const TopRightTextContent = styled.div`
 `;
 
 const TopLeftFlexRow = styled.div`
-display: flex;
-align-items: center;
-justify-content: center;
-`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 const BottomRight = styled.div`
   position: fixed;

@@ -22,7 +22,6 @@ const MessageBubble = (props: TextBubbleProps) => {
       <MessageText style={{ '--color': props.color } as CSSProperties}>
         {props.message}
       </MessageText>
-
     </TextWrapper>
   );
 };
