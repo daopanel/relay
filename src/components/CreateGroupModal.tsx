@@ -234,12 +234,13 @@ const ModalButton = styled.button`
   justify-content: center;
   padding: 12px 16px;
   height: 3rem;
-  background: #271d47;
   border-radius: 8px;
   color: white;
   border: none;
   outline: none;
   cursor: pointer;
+  background-color: #5a46c6;
+
   :disabled {
     color: #75668c;
     background: #31243c;

@@ -72,9 +72,9 @@ const Card = styled.div`
   max-width: 456px;
   border-radius: 8px;
   background-color: white;
-  border: 2px solid #402b5b;
   padding: 24px;
   position: relative;
+  box-shadow: 0px 4px 54px rgba(159, 159, 159, 0.25);
 `;
 
 const Title = styled.h1`
@@ -129,7 +129,7 @@ const Button = styled.button`
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  background-color: #271d47;
+  background-color: #5a46c6;
   border-radius: 8px;
   padding: 16px;
   border: none;
