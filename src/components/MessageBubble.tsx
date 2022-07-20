@@ -22,9 +22,7 @@ const MessageBubble = (props: TextBubbleProps) => {
       <MessageText style={{ '--color': props.color } as CSSProperties}>
         {props.message}
       </MessageText>
-      <MessageDate style={{'--date-color': props.dateColor} as CSSProperties}>
-        4.22
-      </MessageDate>
+
     </TextWrapper>
   );
 };

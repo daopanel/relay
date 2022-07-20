@@ -5,7 +5,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import Avatar from './Avatar';
 import { useConnect, useEnsName } from 'wagmi';
-import door from '../../public/assets/images/exit-door-white.svg';
+import door from '../../public/assets/images/exit-door-dark.svg';
 import MobileExternalLink from '../../public/assets/images/MobileExternalLink';
 import MobileCopyAddress from '../../public/assets/images/MobileCopyAddress';
 import { useResponsiveUserId } from 'hooks';
@@ -83,22 +83,15 @@ const Container = styled.div<{ isLight?: boolean }>`
   padding-right: 19px;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  border-radius: 8px;
   box-sizing: border-box;
-  border-radius: 8px;
-  background: ${(props) =>
-    props.isLight ? '#2f2042' : 'rgba(16, 8, 23, 0.8)'};
-  border: ${(props) =>
-    props.isLight ? '2px solid #523f64' : '2px solid #191027'};
+  background: white;
+  border-bottom: 1px solid rgb(35, 25, 59, 0.45);
   font-size: 1rem;
   transition: 200ms;
   -webkit-transition: background-image 200ms;
   transition: background-image 200ms;
   transition: gap 400ms;
-
   &:hover {
-    background: #2f2042;
-    border: 2px solid #523f64;
     gap: 1.5rem;
   }
 `;
@@ -108,7 +101,7 @@ const Address = styled.h2`
   font-size: 1rem;
   line-height: 18px;
   letter-spacing: -0.01em;
-  color: #ffffff;
+  color: #252727;
 `;
 
 const Link = styled.span`

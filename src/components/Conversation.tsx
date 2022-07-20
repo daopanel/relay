@@ -68,7 +68,6 @@ const Container = styled.div<{ isRequest: boolean }>`
   padding: 22px;
   transition: all 0.4s;
   border-bottom: 1px solid rgba(35, 25, 59, 0.45);
-  border-radius: 8px;
   cursor: pointer;
 
   & > div:first-child {

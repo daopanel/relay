@@ -42,15 +42,12 @@ const Container = styled.div<LogoProps>`
   border-radius: 8px;
   box-sizing: border-box;
   border-radius: 8px;
-  background: rgba(16, 8, 23, 0.8);
   border: 2px solid #191027;
+  background: white;
+  color: #252727;
   font-size: 1rem;
-  transition: 200ms;
-  -webkit-transition: background-image 200ms;
   transition: gap 400ms;
   &:hover {
-    background: #2f2042;
-    border: 2px solid #523f64;
     gap: 1.5rem;
   }
   &:hover > :first-child {

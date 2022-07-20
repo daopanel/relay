@@ -78,7 +78,7 @@ export default function MobileMenu({
       <Header>
         <MobileBetaStatus />
         <ClickableImage
-          src="/assets/images/ArrowLeftWhite.svg"
+          src="/assets/images/ArrowLeftDark.svg"
           height={20}
           width={20}
           alt="close"
@@ -96,14 +96,13 @@ export default function MobileMenu({
         <Link href={'/conversations'} passHref>
           <MenuItem>
             <Image
-              src={'/assets/images/chat-mob.svg'}
+              src={'/assets/images/MessagesLight.png'}
               width={40}
               height={40}
               alt="github"
             />
             <MenuItemDescription>
               <PrimaryText>Messages</PrimaryText>
-              <SecondaryText>View all messages...</SecondaryText>
             </MenuItemDescription>
           </MenuItem>
         </Link>
@@ -117,49 +116,19 @@ export default function MobileMenu({
             />
             <MenuItemDescription>
               <PrimaryText>Groups</PrimaryText>
-              <SecondaryText>View all group conversations...</SecondaryText>
             </MenuItemDescription>
           </MenuItem>
         </Link>
         <Link href={'/requests'} passHref>
           <MenuItem>
             <Image
-              src={'/assets/images/bell-mob.svg'}
+              src={'/assets/images/Broadcasts.png'}
               width={40}
               height={40}
               alt="github"
             />
             <MenuItemDescription>
-              <PrimaryText>Requests</PrimaryText>
-              <SecondaryText>View conversation requests</SecondaryText>
-            </MenuItemDescription>
-          </MenuItem>
-        </Link>
-        <Link href={'/followers'} passHref>
-          <MenuItem>
-            <Image
-              src={'/assets/images/added-people-mob.svg'}
-              width={40}
-              height={40}
-              alt="github"
-            />
-            <MenuItemDescription>
-              <PrimaryText>Followers</PrimaryText>
-              <SecondaryText>View messages from followers.</SecondaryText>
-            </MenuItemDescription>
-          </MenuItem>
-        </Link>
-        <Link href={'/ignored'} passHref>
-          <MenuItem>
-            <Image
-              src={'/assets/images/no-eye-mob.svg'}
-              width={40}
-              height={40}
-              alt="github"
-            />
-            <MenuItemDescription>
-              <PrimaryText>Ignored</PrimaryText>
-              <SecondaryText>View ignored messages</SecondaryText>
+              <PrimaryText>Broadcasts</PrimaryText>
             </MenuItemDescription>
           </MenuItem>
         </Link>
@@ -183,7 +152,7 @@ const MenuItem = styled.a`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  border-bottom: 2px solid #3c2c53;
+  border-bottom: 1px solid #23193b;
   padding: 20px 0;
   gap: 0px;
   transition: gap 400ms;
@@ -207,7 +176,7 @@ const PrimaryText = styled.h2`
   display: flex;
   align-items: center;
   letter-spacing: -0.01em;
-  color: #ffffff;
+  color: #292b2b;
 `;
 
 const SecondaryText = styled.h3`
@@ -236,8 +205,9 @@ const FullHeightSlider = styled.div<StyleProps>`
   position: fixed;
   width: 90vw;
   height: 100vh;
-  background: #2e2043;
   z-index: 100;
+  background: white;
+  border-right: 2px solid black;
   left: ${({ showMenu }) => (showMenu ? '0vw' : '-90vw')};
   visibility: auto;
   visibility: ${({ showMenu }) => (showMenu ? 'auto' : 'hidden')};
