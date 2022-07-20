@@ -142,13 +142,5 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   color: #ffffff;
-  &:hover {
-    background: #543a6e;
-  }
-  &:active {
-    background: #7349e5;
-  }
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 `;
