@@ -50,7 +50,7 @@ const Card = styled.div`
   max-width: 456px;
   min-width: 275px;
   border-radius: 8px;
-  background-color: #100817;
+  background-color: white;
   border: 2px solid #402b5b;
   padding: 24px;
   position: relative;

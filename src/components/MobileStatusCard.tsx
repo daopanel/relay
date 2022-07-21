@@ -71,10 +71,10 @@ const Right = styled.div`
 const Card = styled.div`
   max-width: 456px;
   border-radius: 8px;
-  background-color: #100817;
-  border: 2px solid #402b5b;
+  background-color: white;
   padding: 24px;
   position: relative;
+  box-shadow: 0px 4px 54px rgba(159, 159, 159, 0.25);
 `;
 
 const Title = styled.h1`
@@ -84,7 +84,7 @@ const Title = styled.h1`
   font-size: 18px;
   line-height: 20px;
   letter-spacing: -0.01em;
-  color: #ffffff;
+  color: #252727;
 `;
 
 const Subtitle = styled.h6`
@@ -95,7 +95,7 @@ const Subtitle = styled.h6`
   line-height: 24px;
   align-items: center;
   letter-spacing: -0.01em;
-  color: #dad0e6;
+  color: #252727;
 `;
 
 const ReferSubtitle = styled.div`
@@ -129,7 +129,7 @@ const Button = styled.button`
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  background-color: #271d47;
+  background-color: #5a46c6;
   border-radius: 8px;
   padding: 16px;
   border: none;
@@ -142,13 +142,5 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   color: #ffffff;
-  &:hover {
-    background: #543a6e;
-  }
-  &:active {
-    background: #7349e5;
-  }
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 `;

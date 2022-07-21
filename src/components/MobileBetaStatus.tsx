@@ -9,28 +9,34 @@ export default function MobileBetaStatus() {
       <a href="https://www.daopanel.com/" target="_blank" rel="noreferrer">
         <Image
           src="/assets/images/whiteonly.png"
-          width="24"
+          width="28"
           height="24"
           alt="white-logo"
         />
       </a>
+      <Spacer />
       <a
         href="https://www.github.com/daopanel"
         target="_blank"
         rel="noreferrer">
         <Github />
       </a>
+      <Spacer />
       <MirrorLink
-        href="https://www.mirror.xyz/0xdaopanel.eth"
+        href="https://www.mirror.xyz/panel.eth"
         target="_blank"
         rel="noreferrer"
       />
-      <PublicBeta href="https://docs.xmtp.org/" target="_blank">
-        public beta
-      </PublicBeta>
     </Wrapper>
   );
 }
+
+const Spacer = styled.span`
+  width: 1px;
+  height: 28px;
+  background-color: #9771ff;
+  margin-right: 10px;
+`;
 
 const MirrorLink = styled.a`
   display: block;
@@ -57,6 +63,10 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  background: #7349e5;
+  border: 2px solid #9771ff;
+  padding: 0.5rem 0.25rem 0.5rem 0.5rem;
+  border-radius: 12px;
 
   & > a {
     margin-right: 0.5rem;

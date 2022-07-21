@@ -41,7 +41,7 @@ const SentBy = styled.h3`
   display: flex;
   align-items: center;
   letter-spacing: -0.01em;
-  color: #ffffff;
+  color: #252727;
 `;
 
 const SentAt = styled.time`

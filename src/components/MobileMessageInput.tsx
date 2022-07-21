@@ -38,16 +38,13 @@ const MessageInput = ({ isMobile, onSendMessage }: MessageInputProps) => {
   return (
     <Container>
       <StyledInput
-        placeholder="Type..."
+        placeholder="Write a message..."
         required
         value={inputVal}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         autoFocus={!isMobile}
       />
-      <SvgContainer inputTextCount={inputTextCount} onClick={clearInput}>
-        <TrashCang />
-      </SvgContainer>
       <SvgContainer inputTextCount={inputTextCount} onClick={handleSend}>
         <MessageSendg />
       </SvgContainer>
@@ -62,6 +59,8 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   background: #100817;
+  background: white;
+  background: #f7f7f7;
   backdrop-filter: blur(100px);
   width: 100%;
   height: 68px;
@@ -82,10 +81,11 @@ const StyledInput = styled.input`
   border: none;
   outline: none;
   &::placeholder {
-    color: #75668c;
+    background-color: #f7f7f7;
+    color: #4f5e7b;
     font-weight: 400;
   }
-  color: white;
+  color: #252727;
   font-size: 18px;
 `;
 

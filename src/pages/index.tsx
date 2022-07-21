@@ -1,6 +1,5 @@
 import { useConnect } from 'wagmi';
 import styled from 'styled-components';
-import background from '../../public/assets/images/Artboard1.png';
 import walletConnect from '../../public/assets/images/walletconnect.png';
 import coinbase from '../../public/assets/images/Coinbase.png';
 import LightCoinbase from '../../public/assets/images/LightCoinbase.png';
@@ -13,6 +12,8 @@ import { useEffect, useCallback } from 'react';
 import MobileBetaStatus from 'components/MobileBetaStatus';
 import { useRedirect } from 'hooks';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
+import PanelLogo from '../../public/assets/images/PanelLogo.png';
 
 const highlight = '#7349e5';
 
@@ -62,20 +63,27 @@ export default function Landing() {
 
   return (
     <Page>
+      <Header>
+        <TopLeftFlexRow>
+          <Image height={27} width={29} src={PanelLogo.src} alt="logo"></Image>
+          <TopLeftTitle>Relay</TopLeftTitle>
+          <From>from</From>
+          <Panel>Panel</Panel>
+        </TopLeftFlexRow>
+        <TopRightTextContent>Public Beta</TopRightTextContent>
+      </Header>
       <MaxContentWidth>
-        <Headline>Hello.</Headline>
-        <SubHeader>
-          from{' '}
-          <Wordmark href="https://daopanel.com" target="_blank">
-            daopanel
-          </Wordmark>
-        </SubHeader>
+        <ModalHeader>Connect a wallet</ModalHeader>
+        <ModalParagraph>
+          Wallets are used to send, receive, store, and display digital assets
+          like Ethereum and NFTs.
+        </ModalParagraph>
         <ConnectorList>
           {isMetaMask && (
             <Connector>
               <SignInLink
                 hoverLogo={Metamask.src}
-                defaultLogo={MetamaskPurple.src}
+                defaultLogo={Metamask.src}
                 name={'Metamask'}
                 onClick={handleClickMetamask}
               />
@@ -84,7 +92,7 @@ export default function Landing() {
           <MaybeHideOnMobileConnector shouldHide={isMetaMask}>
             <SignInLink
               hoverLogo={LightWalletConnect.src}
-              defaultLogo={walletConnect.src}
+              defaultLogo={LightWalletConnect.src}
               name={'Wallet Connect'}
               onClick={handleClickWalletConnect}
             />
@@ -92,7 +100,7 @@ export default function Landing() {
           <MaybeHideOnMobileConnector shouldHide={isMetaMask}>
             <SignInLink
               hoverLogo={LightCoinbase.src}
-              defaultLogo={coinbase.src}
+              defaultLogo={LightCoinbase.src}
               name={'Coinbase'}
               onClick={handleClickCoinbase}
             />
@@ -106,6 +114,77 @@ export default function Landing() {
   );
 }
 
+const ModalHeader = styled.h1`
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24.2px;
+  margin-bottom: 5px;
+`;
+
+const ModalParagraph = styled.p`
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-bottom: 48px;
+  text-align: center;
+  color: #5b5b5b;
+`;
+
+const TopLeftTitle = styled.div`
+  font-size: 20px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+
+  &:after {
+    content: '';
+    height: 19px;
+    width: 1px;
+    display: inline-block;
+    background-color: #d9d9d9;
+    margin: 0rem 0.5rem;
+  }
+`;
+
+const From = styled.span`
+  color: #868686;
+  font-weight: 500;
+  font-size: 0.875rem;
+`;
+
+const Panel = styled.span`
+  color: #868686;
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-left: 0.25rem;
+`;
+
+const TopRightTextContent = styled.div`
+  border-radius: 99rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  color: #5b5b5b;
+  font-weight: 400;
+  border: 1px solid #fbfbfb;
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.1));
+
+  &:before {
+    content: '';
+    display: inline-block;
+    transform: translate(-50%, -50%);
+    margin-right: 4px;
+    height: 4px;
+    width: 4px;
+    border-radius: 50%;
+    background-color: #84ffa7;
+  }
+`;
+
+const TopLeftFlexRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const BottomRight = styled.div`
   position: fixed;
   bottom: 0;
@@ -114,63 +193,24 @@ const BottomRight = styled.div`
 `;
 
 const MaxContentWidth = styled.div`
-  max-width: 600px;
+  max-width: 360px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  @media (min-height: 800px) {
-    margin-top: 100px;
-  }
-`;
-
-const Headline = styled.h1`
-  color: ${highlight};
-  font-style: normal;
-  font-weight: 600;
-  font-size: 100.755px;
-  line-height: 161px;
-  text-align: center;
-  color: #7349e5;
-  display: flex;
-  align-items: center;
-
-  &:after {
-    content: '';
-    display: block;
-    height: 85px;
-    width: 3px;
-    background-color: white;
-    animation: flash 1500ms linear infinite;
-    border-radius: 99rem;
-    margin-left: 10px;
-    margin-bottom: 5px;
-  }
-
-  @keyframes flash {
-    0% {
-      opacity: 1;
-    }
-    49% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-    99% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
+  padding: 48px 48px;
+  border-radius: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 4px 54px rgba(159, 159, 159, 0.25);
 `;
 
 const Page = styled.div`
   width: 100vw;
   height: 100vh;
-  background: url(${background.src}) repeat center center fixed;
+  background: repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -180,41 +220,9 @@ const Page = styled.div`
   top: 0;
   left: 0;
   overflow: scroll;
-
-  &:after {
-    background: linear-gradient(60deg, rgba(16, 8, 23, 92.5%), #100817);
-    display: block;
-    content: '';
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
-
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-const SubHeader = styled.h2`
-  margin-left: -1rem;
-  margin-top: -2rem;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 16.8834px;
-  line-height: 23px;
-  text-align: center;
-  color: #dad0e6;
-  margin-bottom: 3rem;
-`;
-
-const Wordmark = styled.a`
-  font-size: 18px;
-  font-weight: 500;
-  color: #ffffff;
-  display: inline;
 `;
 
 const ConnectorList = styled.ul`
@@ -222,9 +230,7 @@ const ConnectorList = styled.ul`
   flex-direction: column;
   gap: 1rem;
   width: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-bottom: 1rem;
+  border-radius: 12px;
 `;
 
 const Connector = styled.li`
@@ -234,11 +240,23 @@ const Connector = styled.li`
   width: 100%;
   min-height: 80px;
   border-radius: 8px;
-  background: rgba(16, 8, 23, 0.8);
 `;
 
 const MaybeHideOnMobileConnector = styled(Connector)<{ shouldHide: boolean }>`
   @media (pointer: coarse) {
     display: ${(p) => (p.shouldHide ? 'none' : 'flex')};
+  }
+`;
+
+const Header = styled.header`
+  width: 100%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1825rem 3rem;
+
+  @media (max-width: 400px) {
+    padding: 1.1825rem 1.5rem;
   }
 `;

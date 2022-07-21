@@ -8,7 +8,7 @@ export default function MessageSend() {
       xmlns="http://www.w3.org/2000/svg">
       <path
         d="M7.18207 10.749L1 7.89655L21 1L14.1034 21L9.96552 12.0345L14.1034 7.89655"
-        stroke="#75668C"
+        stroke="#252727"
         strokeWidth="2"
         strokeMiterlimit="10"
         strokeLinecap="round"
