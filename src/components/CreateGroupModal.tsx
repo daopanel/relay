@@ -33,10 +33,16 @@ export const CreateGroupModal: FunctionComponent<CreateGroupModalProps> = ({
     });
   };
 
+  const handleClose = () => {
+    onRequestClose();
+    setPeerAddresses(new Set());
+    setInputValue('');
+  };
+
   return (
     <Modal
       isOpen={isOpen}
-      onRequestClose={onRequestClose}
+      onRequestClose={handleClose}
       className="_"
       overlayClassName="_"
       contentElement={(props, children) => (
@@ -49,7 +55,7 @@ export const CreateGroupModal: FunctionComponent<CreateGroupModalProps> = ({
       shouldCloseOnOverlayClick={true}>
       <ModalHeader>
         <ModalTitle>Create a Group</ModalTitle>
-        <ModalClose>
+        <ModalClose onClick={handleClose}>
           <Image
             src="/assets/images/MobileX.svg"
             alt="plus"
@@ -59,7 +65,6 @@ export const CreateGroupModal: FunctionComponent<CreateGroupModalProps> = ({
         </ModalClose>
       </ModalHeader>
       <ModalFormTitle>ADD ADDRESSES</ModalFormTitle>
-
       <ModalForm
         onSubmit={(e: FormEvent<HTMLFormElement>) => {
           e.preventDefault();
@@ -113,7 +118,7 @@ export const CreateGroupModal: FunctionComponent<CreateGroupModalProps> = ({
           disabled={peerAddresses.size < 1}>
           Create Group
         </ModalButton>
-        <ModalCancel onClick={() => null}>Cancel</ModalCancel>
+        <ModalCancel onClick={handleClose}>Cancel</ModalCancel>
       </Buttons>
     </Modal>
   );
