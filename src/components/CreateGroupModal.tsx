@@ -76,8 +76,6 @@ export const CreateGroupModal: FunctionComponent<CreateGroupModalProps> = ({
             // type="submit"
             value={inputValue}
             onChange={(e: ChangeEvent<HTMLInputElement>) => {
-              console.log(e);
-              console.log('changed');
               setInputValue(e.target.value);
             }}
             placeholder="Enter an address..."

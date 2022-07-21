@@ -109,7 +109,7 @@ export default function MobileMenu({
         <Link href={'/groups'} passHref>
           <MenuItem>
             <Image
-              src={'/assets/images/group.svg'}
+              src={'/assets/images/groupLight.svg'}
               width={40}
               height={40}
               alt="groups"
