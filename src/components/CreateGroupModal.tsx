@@ -245,8 +245,8 @@ const ModalButton = styled.button`
   background-color: #5a46c6;
 
   :disabled {
-    color: #75668c;
-    background: #31243c;
+    color: #ffffff;
+    background: rgb(72, 72, 72, 0.2);
     cursor: default;
   }
   margin-bottom: 12px;
