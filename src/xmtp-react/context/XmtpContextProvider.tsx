@@ -82,6 +82,11 @@ export const XmtpContextProvider: FunctionComponent<{
     }
   }, []);
 
+  const handleSignatureDenied = useCallback(() => {
+    setClient(null);
+    setStatus(Status.denied);
+  }, []);
+
   const handleConversationsLoaded = useCallback(() => {
     // Do we need to do anything here?
   }, []);
@@ -164,6 +169,7 @@ export const XmtpContextProvider: FunctionComponent<{
         handleClientWaitingForSignature,
         handleClientConnect,
         handleClientError,
+        handleSignatureDenied,
         handleNewConversation,
         handleConversationsLoaded,
         handleNewMessage,
@@ -176,6 +182,7 @@ export const XmtpContextProvider: FunctionComponent<{
     handleClientWaitingForSignature,
     handleClientConnect,
     handleClientError,
+    handleSignatureDenied,
     handleNewConversation,
     handleConversationsLoaded,
     handleNewMessage,

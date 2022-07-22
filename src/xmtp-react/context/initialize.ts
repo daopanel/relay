@@ -9,6 +9,7 @@ export const initialize = async (
   onWaitingForSignature: () => unknown,
   onClientConnect: (client: Client) => unknown,
   onClientError: (error: unknown) => unknown,
+  onSignatureDenied: () => unknown,
   onNewConversation: (conversation: Conversation) => unknown,
   onConversationsLoaded: (conversations: Conversation[]) => unknown,
   onNewMessage: (conversation: Conversation, message: Message) => unknown,
@@ -24,10 +25,18 @@ export const initialize = async (
     /*
      * Initialize client...
      */
-    const client = await Client.create(wallet, {
-      codecs: [gmc],
-    });
-    onClientConnect(client);
+    let client: Client | null;
+    try {
+      client = await Client.create(wallet, {
+        codecs: [gmc],
+      });
+      onClientConnect(client);
+    } catch (err) {
+      client = null;
+      onSignatureDenied();
+    }
+
+    if (client === null) return;
 
     /*
      * Load all existing conversations and messages
