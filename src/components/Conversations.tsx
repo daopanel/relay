@@ -90,6 +90,20 @@ export default function Conversations() {
           />
         </Centered>
       )}
+      {xmtp.status === Status.error && (
+        <Centered>
+          <MobileStatusCard
+            title="Initialize XMTP Client..."
+            subtitle="To begin messaging, you must first initialize the XMTP client by signing a message."
+            buttonText="Initialize Client"
+            isLoading={false}
+            isError={false}
+            errorText={'Signature request cancelled. Try again...'}
+            loadingText="Awaiting signature..."
+            onClick={xmtp.init}
+          />
+        </Centered>
+      )}
       {xmtp.status === Status.waiting && (
         <Centered>
           <MobileStatusCard

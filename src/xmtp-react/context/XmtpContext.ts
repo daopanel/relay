@@ -48,7 +48,7 @@ export interface ReadyXmtp {
 
 export interface ErrorXmtp {
   status: Status.error;
-  init: (wallet: Signer) => Promise<unknown>;
+  init: () => unknown;
 }
 
 export type XmtpContextType =
