@@ -1,9 +1,4 @@
-import {
-  useActiveTab,
-  usePreviousVal,
-  useDeviceDetect,
-  useResponsiveUserId,
-} from 'hooks';
+import { useDeviceDetect, useResponsiveUserId } from 'hooks';
 import { useCallback, useRef, useState } from 'react';
 import styled from 'styled-components';
 import MobileMessagesHeader from './MobileMessagesHeader';
