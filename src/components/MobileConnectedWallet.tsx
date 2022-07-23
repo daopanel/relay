@@ -1,4 +1,3 @@
-import { useMemo, useState } from 'react';
 import useCopyAddress from 'hooks/useCopyClipboard';
 import React from 'react';
 import Image from 'next/image';
@@ -157,8 +156,3 @@ const LinkContainer = styled.div`
   display: flex;
   align-items: center;
 `;
-
-function shortAddress(address: string): string {
-  if (address.length < 15) return address;
-  return address.slice(0, 8) + '...' + address.slice(-4);
-}

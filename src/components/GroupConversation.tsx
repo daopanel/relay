@@ -121,10 +121,6 @@ const StyledText = styled(Text)<{ isRequest: boolean }>`
   margin-bottom: ${({ isRequest }) => (isRequest ? '0' : '5px')};
 `;
 
-function shortAddress(str: string): string {
-  return str.slice(0, 6) + '...' + str.slice(-4);
-}
-
 function previewMessage(message: string): string {
   if (message.length < 50) return message;
   return message.slice(0, 50) + '...';
