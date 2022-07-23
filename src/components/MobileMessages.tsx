@@ -226,12 +226,7 @@ export default function Messages() {
       {(xmtp.status === Status.loading ||
         xmtp.status === Status.ready ||
         Object.keys(messages).length === 0) && (
-        <FixedFooter>
-          <MobileMessageInput
-            onSendMessage={doSendMessage}
-            isMobile={isMobile}
-          />
-        </FixedFooter>
+        <MobileMessageInput onSendMessage={doSendMessage} isMobile={isMobile} />
       )}
     </Page>
   );
@@ -257,18 +252,8 @@ const List = styled.ul<{ isMobile: boolean }>`
   gap: 0.75rem;
   padding: 1rem;
   width: 100%;
-  height: ${({ isMobile }) =>
-    isMobile ? 'calc(100vh - 240px)' : 'calc(100vh - 164px);'};
+  flex: 1;
   z-index: 10;
-`;
-
-const FixedFooter = styled.div`
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: ${({ theme }) => theme.colors.darkPurple};
 `;
 
 const Centered = styled.div`
