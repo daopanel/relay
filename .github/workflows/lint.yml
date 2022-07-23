@@ -21,12 +21,11 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v2
 
-      # Install your linters here
       - name: Install Linters
         run: npm install
 
-    - name: Run ESLint
-      run: npm run lint
+      - name: Run ESLint
+        run: npm run lint
 
-    - name: Run Prettier
-      run: npm run prettier
+      - name: Run Prettier
+        run: npm run prettier
