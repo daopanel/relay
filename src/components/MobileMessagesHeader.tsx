@@ -71,9 +71,3 @@ const GoBack = styled(Image)`
 const Menu = styled(Image)`
   cursor: pointer;
 `;
-
-function shortAddress(str: string): string {
-  if (str.length > 20) {
-    return str.slice(0, 6) + '...' + str.slice(-5);
-  } else return str;
-}
