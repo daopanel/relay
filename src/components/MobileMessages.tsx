@@ -204,7 +204,7 @@ export default function Messages() {
         <MobileLoadingMessages isMobile={isMobile} />
       )}
       {xmtp.status === Status.ready && (
-        <List isMobile={isMobile}>
+        <List>
           <div ref={divScrollToRef}></div>
           {buckets.map((bucketMessages, index) => {
             if (bucketMessages.length > 0) {
@@ -250,24 +250,18 @@ const Page = styled.div`
   overflow: scroll;
 `;
 
-const List = styled.ul<{ isMobile: boolean }>`
+const List = styled.ul`
   display: flex;
   flex-direction: column-reverse;
   overflow: scroll;
   gap: 0.75rem;
   padding: 1rem;
   width: 100%;
-  height: ${({ isMobile }) =>
-    isMobile ? 'calc(100vh - 240px)' : 'calc(100vh - 164px);'};
   z-index: 10;
 `;
 
 const FixedFooter = styled.div`
-  position: fixed;
   width: 100%;
-  bottom: 0;
-  left: 0;
-  right: 0;
   background-color: ${({ theme }) => theme.colors.darkPurple};
 `;
 
