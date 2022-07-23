@@ -179,17 +179,6 @@ const PrimaryText = styled.h2`
   color: #292b2b;
 `;
 
-const SecondaryText = styled.h3`
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
-  display: flex;
-  align-items: center;
-  letter-spacing: -0.01em;
-  color: #75668c;
-`;
-
 const Header = styled.div`
   width: 100%;
   display: flex;

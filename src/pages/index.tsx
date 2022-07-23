@@ -1,10 +1,7 @@
 import { useConnect } from 'wagmi';
 import styled from 'styled-components';
-import walletConnect from '../../public/assets/images/walletconnect.png';
-import coinbase from '../../public/assets/images/Coinbase.png';
 import LightCoinbase from '../../public/assets/images/LightCoinbase.png';
 import LightWalletConnect from '../../public/assets/images/LightWalletConnect.png';
-import MetamaskPurple from '../../public/assets/images/MetamaskPurple.svg';
 import Metamask from '../../public/assets/images/Metamask.svg';
 import SignInLink from 'components/Connector';
 import { useIsMetaMask } from 'hooks';
@@ -14,8 +11,6 @@ import { useRedirect } from 'hooks';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import PanelLogo from '../../public/assets/images/PanelLogo.png';
-
-const highlight = '#7349e5';
 
 export default function Landing() {
   const router = useRouter();

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import MessageSendg from '../../public/assets/images/MessageSend';
-import TrashCang from '../../public/assets/images/MobileTrashCan';
 import React, { useCallback } from 'react';
 
 interface MessageInputProps {
@@ -11,10 +10,6 @@ interface MessageInputProps {
 
 const MessageInput = ({ isMobile, onSendMessage }: MessageInputProps) => {
   const [inputVal, setInputVal] = useState<string>('');
-
-  const clearInput = useCallback(() => {
-    setInputVal('');
-  }, []);
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setInputVal(e.target.value);
