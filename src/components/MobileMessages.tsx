@@ -134,7 +134,7 @@ export default function Messages() {
         </Centered>
       </Page>
     );
-console.log("jello")
+
   return (
     <Page>
       <MobileMenu onClickClose={closeMenu} showMenu={showMenu} />
