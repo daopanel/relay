@@ -7,6 +7,7 @@ import Avatar from './Avatar';
 // import MobileLoadingText from 'components/MobileLoadingText';
 import { shortDate } from 'utils/date';
 import { Group, useGroupMessages } from 'xmtp-react/groups';
+import { getLastMessage } from 'xmtp-react/conversations';
 
 interface GroupConversationProps {
   groupId: string;
@@ -15,7 +16,7 @@ interface GroupConversationProps {
 
 export default function GroupConversation(props: GroupConversationProps) {
   const messages = useGroupMessages(props.groupId);
-  const lastMessage = Object.values(messages)[0];
+  const lastMessage = getLastMessage(messages);
   const router = useRouter();
 
   const goToConversation = useCallback(() => {
