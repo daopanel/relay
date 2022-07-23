@@ -257,6 +257,7 @@ const List = styled.ul`
   gap: 0.75rem;
   padding: 1rem;
   width: 100%;
+  height: 100%;
   z-index: 10;
 `;
 
