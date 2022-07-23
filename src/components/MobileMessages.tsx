@@ -4,7 +4,7 @@ import {
   useDeviceDetect,
   useResponsiveUserId,
 } from 'hooks';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import MobileMessagesHeader from './MobileMessagesHeader';
 import MobileMessageInput from './MobileMessageInput';
@@ -44,17 +44,11 @@ export default function Messages() {
   const openMenu = useCallback(() => setShowMenu(true), [setShowMenu]);
   const closeMenu = useCallback(() => setShowMenu(false), [setShowMenu]);
 
-  // const scrollToBottom = useCallback(() => {
-  //   if (divScrollToRef.current) {
-  //     divScrollToRef.current.scrollIntoView({ behavior: 'smooth' });
-  //   }
-  // }, [divScrollToRef]);
-
-  // useEffect(() => {
-  //   if (status === ConversationStatus.ready) {
-  //     scrollToBottom();
-  //   }
-  // }, [status, scrollToBottom]);
+  useEffect(() => {
+    if (divScrollToRef.current) {
+      divScrollToRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages]);
 
   // const sendNewMessageNotification = useCallback(
   //   (messages) => {
