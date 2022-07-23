@@ -1,11 +1,12 @@
 import { Client } from '@xmtp/xmtp-js';
 import { sendGroupMessage } from './sendGroupMessage';
-import { fromPeerAddresses } from './Group';
+import { fromPeerAddresses, withDefaultAlias } from './Group';
 import { fromGroupAndPayload } from './GroupMessageContent';
 
 export const createGroup = async (
   client: Client,
   peerAddresses: string[],
+  defaultAlias: string,
   introText: string
 ) => {
   for (const peerAddress of peerAddresses) {
@@ -20,7 +21,10 @@ export const createGroup = async (
     ...peerAddresses,
     client.address,
   ]);
-  const group = fromPeerAddresses(participantAddresses);
+  const group = withDefaultAlias(
+    fromPeerAddresses(participantAddresses),
+    defaultAlias
+  );
   const content = fromGroupAndPayload(group, introText);
 
   await sendGroupMessage(client, content);

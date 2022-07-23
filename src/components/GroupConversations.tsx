@@ -36,12 +36,16 @@ export default function GroupConversations() {
     setShowNewConversation(false);
   }, []);
 
-  const handleCreateGroup = async (peerAddresses: string[]) => {
+  const handleCreateGroup = async (
+    defaultAlias: string,
+    peerAddresses: string[]
+  ) => {
     if (xmtp.status === Status.ready) {
       try {
         const groupId = await createGroup(
           xmtp.client,
           peerAddresses,
+          defaultAlias,
           `Created at datetime: ${new Date()}`
         );
         router.push('/g/' + groupId);
@@ -132,7 +136,13 @@ export default function GroupConversations() {
       {xmtp.status === Status.ready && (
         <List isMobile={isMobile}>
           {Object.keys(groups).map((groupId: string) => {
-            return <GroupConversation key={groupId} groupId={groupId} />;
+            return (
+              <GroupConversation
+                key={groupId}
+                groupId={groupId}
+                group={groups[groupId]}
+              />
+            );
           })}
         </List>
       )}
