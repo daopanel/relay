@@ -27,5 +27,9 @@ export const useResponsiveUserId = (
 };
 
 function truncated(str: string): string {
-  return str.slice(0, 6) + '...' + str.slice(-4);
+  if (str.length < 18) {
+    return str;
+  } else {
+    return str.slice(0, 15) + '...' + str.slice(-4);
+  }
 }
