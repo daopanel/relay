@@ -193,7 +193,7 @@ export default function Messages() {
         <MobileLoadingMessages isMobile={isMobile} />
       )}
       {xmtp.status === Status.ready && (
-        <List ref={scrollToRef}>
+        <List ref={scrollToRef} isMobile={isMobile}>
           {buckets.map((bucketMessages, index) => {
             if (bucketMessages.length > 0) {
               return (
@@ -233,14 +233,16 @@ const Page = styled.div`
   overflow: scroll;
 `;
 
-const List = styled.ul`
+const List = styled.ul<{isMobile: boolean}>`
   display: flex;
   flex-direction: column-reverse;
   overflow: scroll;
   gap: 0.75rem;
   padding: 1rem;
   width: 100%;
+  flex: 1;
   z-index: 10;
+  scroll-behavior: smooth;
 `;
 
 const Centered = styled.div`
