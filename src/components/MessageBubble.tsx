@@ -49,13 +49,4 @@ const MessageText = styled.p`
   word-break: break-word;
 `;
 
-const MessageDate = styled.span`
-  font-size: 0.625rem;
-  line-height: 12.1px;
-  font-weight: 400;
-  padding-top: 8px;
-  color: #e2e2e2;
-  color: var(--date-color);
-`;
-
 export default MessageBubble;

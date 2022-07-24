@@ -1,10 +1,5 @@
-import {
-  useActiveTab,
-  usePreviousVal,
-  useDeviceDetect,
-  useResponsiveUserId,
-} from 'hooks';
-import { useCallback, useRef, useState } from 'react';
+import { useDeviceDetect, useResponsiveUserId } from 'hooks';
+import { useCallback, useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import MobileMessagesHeader from './MobileMessagesHeader';
 import MobileMessageInput from './MobileMessageInput';
@@ -38,23 +33,17 @@ export default function Messages() {
   // const { visibilityState: isTabVisible } = useActiveTab();
   // const prevMessagesCount = usePreviousVal(messages.length);
   const [showMenu, setShowMenu] = useState<boolean>(false);
-  const divScrollToRef = useRef<HTMLInputElement>(null);
+  const scrollToRef = useRef<HTMLUListElement>(null);
   const responsiveId = useResponsiveUserId(peerEnsName, peerAddress, 'N/A');
 
   const openMenu = useCallback(() => setShowMenu(true), [setShowMenu]);
   const closeMenu = useCallback(() => setShowMenu(false), [setShowMenu]);
 
-  // const scrollToBottom = useCallback(() => {
-  //   if (divScrollToRef.current) {
-  //     divScrollToRef.current.scrollIntoView({ behavior: 'smooth' });
-  //   }
-  // }, [divScrollToRef]);
-
-  // useEffect(() => {
-  //   if (status === ConversationStatus.ready) {
-  //     scrollToBottom();
-  //   }
-  // }, [status, scrollToBottom]);
+  useEffect(() => {
+    if (scrollToRef.current) {
+      scrollToRef.current.scrollTop = 0;
+    }
+  }, [messages]);
 
   // const sendNewMessageNotification = useCallback(
   //   (messages) => {
@@ -204,8 +193,7 @@ export default function Messages() {
         <MobileLoadingMessages isMobile={isMobile} />
       )}
       {xmtp.status === Status.ready && (
-        <List>
-          <div ref={divScrollToRef}></div>
+        <List ref={scrollToRef}>
           {buckets.map((bucketMessages, index) => {
             if (bucketMessages.length > 0) {
               return (
@@ -226,12 +214,7 @@ export default function Messages() {
       {(xmtp.status === Status.loading ||
         xmtp.status === Status.ready ||
         Object.keys(messages).length === 0) && (
-        <FixedFooter>
-          <MobileMessageInput
-            onSendMessage={doSendMessage}
-            isMobile={isMobile}
-          />
-        </FixedFooter>
+        <MobileMessageInput onSendMessage={doSendMessage} isMobile={isMobile} />
       )}
     </Page>
   );
@@ -258,11 +241,6 @@ const List = styled.ul`
   padding: 1rem;
   width: 100%;
   z-index: 10;
-`;
-
-const FixedFooter = styled.div`
-  width: 100%;
-  background-color: ${({ theme }) => theme.colors.darkPurple};
 `;
 
 const Centered = styled.div`
