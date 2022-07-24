@@ -106,8 +106,8 @@ export default function MobileMenu({
             </MenuItemDescription>
           </MenuItem>
         </Link>
-        <Link href={'/groups'} passHref>
-          <MenuItem>
+        {/* <Link href={'/groups'} passHref> */}
+          <InactiveMenuItem>
             <Image
               src={'/assets/images/groupLight.svg'}
               width={40}
@@ -115,12 +115,12 @@ export default function MobileMenu({
               alt="groups"
             />
             <MenuItemDescription>
-              <PrimaryText>Groups</PrimaryText>
+              <PrimaryText>Groups coming soon!!</PrimaryText>
             </MenuItemDescription>
-          </MenuItem>
-        </Link>
-        <Link href={'/requests'} passHref>
-          <MenuItem>
+          </InactiveMenuItem>
+        {/* </Link> */}
+        {/* <Link href={'/requests'} passHref> */}
+          <InactiveMenuItem>
             <Image
               src={'/assets/images/Broadcasts.png'}
               width={40}
@@ -128,10 +128,10 @@ export default function MobileMenu({
               alt="github"
             />
             <MenuItemDescription>
-              <PrimaryText>Broadcasts</PrimaryText>
+              <PrimaryText>Broadcasts coming soon!!</PrimaryText>
             </MenuItemDescription>
-          </MenuItem>
-        </Link>
+          </InactiveMenuItem>
+        {/* </Link> */}
       </MenuItems>
     </FullHeightSlider>
   );
@@ -161,6 +161,13 @@ const MenuItem = styled.a`
     gap: 10px;
   }
 `;
+
+const InactiveMenuItem = styled(MenuItem)`
+  cursor: auto;
+  &:hover {
+    gap: 0px;
+  }
+`
 
 const MenuItemDescription = styled.div`
   display: flex;
