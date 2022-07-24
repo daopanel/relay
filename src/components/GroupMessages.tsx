@@ -44,7 +44,7 @@ export const GroupMessages: FunctionComponent = () => {
       <MobileMenu onClickClose={closeMenu} showMenu={showMenu} />
       <MobileMessagesHeader
         onMenuClick={openMenu}
-        titleText={group.defaultAlias || ''}
+        titleText={group?.defaultAlias || ''}
         onClickBack={() => router.push('/groups')}
       />
       {xmtp.status === Status.idle && (
