@@ -107,30 +107,30 @@ export default function MobileMenu({
           </MenuItem>
         </Link>
         {/* <Link href={'/groups'} passHref> */}
-          <InactiveMenuItem>
-            <Image
-              src={'/assets/images/groupLight.svg'}
-              width={40}
-              height={40}
-              alt="groups"
-            />
-            <MenuItemDescription>
-              <PrimaryText>Groups Coming Soon!!</PrimaryText>
-            </MenuItemDescription>
-          </InactiveMenuItem>
+        <InactiveMenuItem>
+          <Image
+            src={'/assets/images/groupLight.svg'}
+            width={40}
+            height={40}
+            alt="groups"
+          />
+          <MenuItemDescription>
+            <PrimaryText>Groups Coming Soon!!</PrimaryText>
+          </MenuItemDescription>
+        </InactiveMenuItem>
         {/* </Link> */}
         {/* <Link href={'/requests'} passHref> */}
-          <InactiveMenuItem>
-            <Image
-              src={'/assets/images/Broadcasts.png'}
-              width={40}
-              height={40}
-              alt="github"
-            />
-            <MenuItemDescription>
-              <PrimaryText>Broadcasts Coming Soon!!</PrimaryText>
-            </MenuItemDescription>
-          </InactiveMenuItem>
+        <InactiveMenuItem>
+          <Image
+            src={'/assets/images/Broadcasts.png'}
+            width={40}
+            height={40}
+            alt="github"
+          />
+          <MenuItemDescription>
+            <PrimaryText>Broadcasts Coming Soon!!</PrimaryText>
+          </MenuItemDescription>
+        </InactiveMenuItem>
         {/* </Link> */}
       </MenuItems>
     </FullHeightSlider>
@@ -167,7 +167,7 @@ const InactiveMenuItem = styled(MenuItem)`
   &:hover {
     gap: 0px;
   }
-`
+`;
 
 const MenuItemDescription = styled.div`
   display: flex;
