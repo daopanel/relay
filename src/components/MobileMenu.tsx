@@ -106,32 +106,32 @@ export default function MobileMenu({
             </MenuItemDescription>
           </MenuItem>
         </Link>
-        <Link href={'/groups'} passHref>
-          <MenuItem>
-            <Image
-              src={'/assets/images/groupLight.svg'}
-              width={40}
-              height={40}
-              alt="groups"
-            />
-            <MenuItemDescription>
-              <PrimaryText>Groups</PrimaryText>
-            </MenuItemDescription>
-          </MenuItem>
-        </Link>
-        <Link href={'/requests'} passHref>
-          <MenuItem>
-            <Image
-              src={'/assets/images/Broadcasts.png'}
-              width={40}
-              height={40}
-              alt="github"
-            />
-            <MenuItemDescription>
-              <PrimaryText>Broadcasts</PrimaryText>
-            </MenuItemDescription>
-          </MenuItem>
-        </Link>
+        {/* <Link href={'/groups'} passHref> */}
+        <InactiveMenuItem>
+          <Image
+            src={'/assets/images/groupLight.svg'}
+            width={40}
+            height={40}
+            alt="groups"
+          />
+          <MenuItemDescription>
+            <InactivePrimaryText>Groups Coming Soon</InactivePrimaryText>
+          </MenuItemDescription>
+        </InactiveMenuItem>
+        {/* </Link> */}
+        {/* <Link href={'/requests'} passHref> */}
+        <InactiveMenuItem>
+          <Image
+            src={'/assets/images/Broadcasts.png'}
+            width={40}
+            height={40}
+            alt="github"
+          />
+          <MenuItemDescription>
+            <InactivePrimaryText>Broadcasts Coming Soon</InactivePrimaryText>
+          </MenuItemDescription>
+        </InactiveMenuItem>
+        {/* </Link> */}
       </MenuItems>
     </FullHeightSlider>
   );
@@ -162,6 +162,12 @@ const MenuItem = styled.a`
   }
 `;
 
+const InactiveMenuItem = styled(MenuItem)`
+  &:hover {
+    gap: 0px;
+  }
+`;
+
 const MenuItemDescription = styled.div`
   display: flex;
   flex-direction: column;
@@ -179,6 +185,9 @@ const PrimaryText = styled.h2`
   color: #292b2b;
 `;
 
+const InactivePrimaryText = styled(PrimaryText)`
+  color: rgb(41, 43, 43, 0.4);
+`;
 const Header = styled.div`
   width: 100%;
   display: flex;
