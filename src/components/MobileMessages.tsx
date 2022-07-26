@@ -97,7 +97,7 @@ export default function Messages() {
           onClickBack={goToConversations}
           titleText={responsiveId}
         />
-        <MobileLoadingEnsName />;
+        <MobileLoadingEnsName />
       </>
     );
 
