@@ -35,6 +35,7 @@ export default function Messages() {
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const scrollToRef = useRef<HTMLUListElement>(null);
   const responsiveId = useResponsiveUserId(peerEnsName, peerAddress, 'N/A');
+  const [peerIsAvailable, setPeerIsAvailable] = useState<boolean | undefined>();
 
   const openMenu = useCallback(() => setShowMenu(true), [setShowMenu]);
   const closeMenu = useCallback(() => setShowMenu(false), [setShowMenu]);
@@ -44,6 +45,16 @@ export default function Messages() {
       scrollToRef.current.scrollTop = 0;
     }
   }, [messages]);
+
+  useEffect(() => {
+    if (xmtp.status === Status.ready && peerAddress) {
+      const effect = async () => {
+        const peerIsAvailable = await xmtp.client.canMessage(peerAddress);
+        setPeerIsAvailable(peerIsAvailable);
+      };
+      effect();
+    }
+  }, [xmtp, peerAddress]);
 
   // const sendNewMessageNotification = useCallback(
   //   (messages) => {
@@ -132,7 +143,7 @@ export default function Messages() {
         onMenuClick={openMenu}
         titleText={responsiveId}
       />
-      {/* {status === ConversationStatus.noPeerAvailable && (
+      {peerIsAvailable === false && (
         <Centered>
           <MobileStatusCard
             noPeerAvailable
@@ -146,7 +157,7 @@ export default function Messages() {
             onClick={goToConversations}
           />
         </Centered>
-      )} */}
+      )}
       {xmtp.status === Status.idle && (
         <Centered>
           <MobileStatusCard
