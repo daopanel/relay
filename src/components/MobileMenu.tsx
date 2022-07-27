@@ -107,7 +107,7 @@ export default function MobileMenu({
           </MenuItem>
         </Link>
         <Link href={'/groups'} passHref>
-          <MenuItem onClick={onClickClose}>
+          <MenuItem style={{ pointerEvents: 'none' }}>
             <Image
               src={'/assets/images/groupLight.svg'}
               width={40}
@@ -115,12 +115,12 @@ export default function MobileMenu({
               alt="groups"
             />
             <MenuItemDescription>
-              <PrimaryText>Groups</PrimaryText>
+              <InactivePrimaryText>Groups Coming Soon</InactivePrimaryText>
             </MenuItemDescription>
           </MenuItem>
         </Link>
         <Link href={'/requests'} passHref>
-          <MenuItem onClick={onClickClose}>
+          <MenuItem style={{ pointerEvents: 'none' }}>
             <Image
               src={'/assets/images/Broadcasts.png'}
               width={40}
@@ -128,7 +128,7 @@ export default function MobileMenu({
               alt="github"
             />
             <MenuItemDescription>
-              <PrimaryText>Broadcasts</PrimaryText>
+              <InactivePrimaryText>Broadcasts Coming Soon</InactivePrimaryText>
             </MenuItemDescription>
           </MenuItem>
         </Link>
@@ -179,6 +179,9 @@ const PrimaryText = styled.h2`
   color: #292b2b;
 `;
 
+const InactivePrimaryText = styled(PrimaryText)`
+  color: rgb(41, 43, 43, 0.4);
+`;
 const Header = styled.div`
   width: 100%;
   display: flex;
