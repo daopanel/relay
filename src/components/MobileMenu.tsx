@@ -94,7 +94,7 @@ export default function MobileMenu({
       </ConnectedWrapper>
       <MenuItems>
         <Link href={'/conversations'} passHref>
-          <MenuItem>
+          <MenuItem onClick={onClickClose}>
             <Image
               src={'/assets/images/MessagesLight.png'}
               width={40}
@@ -107,7 +107,7 @@ export default function MobileMenu({
           </MenuItem>
         </Link>
         <Link href={'/groups'} passHref>
-          <MenuItem>
+          <MenuItem onClick={onClickClose}>
             <Image
               src={'/assets/images/groupLight.svg'}
               width={40}
@@ -120,7 +120,7 @@ export default function MobileMenu({
           </MenuItem>
         </Link>
         <Link href={'/requests'} passHref>
-          <MenuItem>
+          <MenuItem onClick={onClickClose}>
             <Image
               src={'/assets/images/Broadcasts.png'}
               width={40}
