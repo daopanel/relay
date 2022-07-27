@@ -165,6 +165,7 @@ const MenuItem = styled.a`
 const InactiveMenuItem = styled(MenuItem)`
   &:hover {
     gap: 0px;
+    cursor: auto;
   }
 `;
 
