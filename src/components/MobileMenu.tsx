@@ -94,7 +94,7 @@ export default function MobileMenu({
       </ConnectedWrapper>
       <MenuItems>
         <Link href={'/conversations'} passHref>
-          <MenuItem>
+          <MenuItem onClick={onClickClose}>
             <Image
               src={'/assets/images/MessagesLight.png'}
               width={40}
