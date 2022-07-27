@@ -106,7 +106,7 @@ export default function MobileMenu({
             </MenuItemDescription>
           </MenuItem>
         </Link>
-        {/* <Link href={'/groups'} passHref> */}
+        <Link href={'#'} passHref>
         <InactiveMenuItem>
           <Image
             src={'/assets/images/groupLight.svg'}
@@ -118,8 +118,8 @@ export default function MobileMenu({
             <InactivePrimaryText>Groups Coming Soon</InactivePrimaryText>
           </MenuItemDescription>
         </InactiveMenuItem>
-        {/* </Link> */}
-        {/* <Link href={'/requests'} passHref> */}
+        </Link>
+        <Link href={'#'} passHref>
         <InactiveMenuItem>
           <Image
             src={'/assets/images/Broadcasts.png'}
@@ -131,7 +131,7 @@ export default function MobileMenu({
             <InactivePrimaryText>Broadcasts Coming Soon</InactivePrimaryText>
           </MenuItemDescription>
         </InactiveMenuItem>
-        {/* </Link> */}
+        </Link>
       </MenuItems>
     </FullHeightSlider>
   );
