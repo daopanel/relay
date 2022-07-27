@@ -107,30 +107,30 @@ export default function MobileMenu({
           </MenuItem>
         </Link>
         <Link href={'#'} passHref>
-        <InactiveMenuItem>
-          <Image
-            src={'/assets/images/groupLight.svg'}
-            width={40}
-            height={40}
-            alt="groups"
-          />
-          <MenuItemDescription>
-            <InactivePrimaryText>Groups Coming Soon</InactivePrimaryText>
-          </MenuItemDescription>
-        </InactiveMenuItem>
+          <MenuItem style={{ pointerEvents: 'none' }}>
+            <Image
+              src={'/assets/images/groupLight.svg'}
+              width={40}
+              height={40}
+              alt="groups"
+            />
+            <MenuItemDescription>
+              <InactivePrimaryText>Groups Coming Soon</InactivePrimaryText>
+            </MenuItemDescription>
+          </MenuItem>
         </Link>
         <Link href={'#'} passHref>
-        <InactiveMenuItem>
-          <Image
-            src={'/assets/images/Broadcasts.png'}
-            width={40}
-            height={40}
-            alt="github"
-          />
-          <MenuItemDescription>
-            <InactivePrimaryText>Broadcasts Coming Soon</InactivePrimaryText>
-          </MenuItemDescription>
-        </InactiveMenuItem>
+          <MenuItem style={{ pointerEvents: 'none' }}>
+            <Image
+              src={'/assets/images/Broadcasts.png'}
+              width={40}
+              height={40}
+              alt="github"
+            />
+            <MenuItemDescription>
+              <InactivePrimaryText>Broadcasts Coming Soon</InactivePrimaryText>
+            </MenuItemDescription>
+          </MenuItem>
         </Link>
       </MenuItems>
     </FullHeightSlider>
@@ -159,13 +159,6 @@ const MenuItem = styled.a`
   cursor: pointer;
   &:hover {
     gap: 10px;
-  }
-`;
-
-const InactiveMenuItem = styled(MenuItem)`
-  &:hover {
-    gap: 0px;
-    cursor: auto;
   }
 `;
 
