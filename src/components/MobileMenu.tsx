@@ -106,7 +106,7 @@ export default function MobileMenu({
             </MenuItemDescription>
           </MenuItem>
         </Link>
-        <Link href={'#'} passHref>
+        <Link href={'/groups'} passHref>
           <MenuItem style={{ pointerEvents: 'none' }}>
             <Image
               src={'/assets/images/groupLight.svg'}
@@ -119,7 +119,7 @@ export default function MobileMenu({
             </MenuItemDescription>
           </MenuItem>
         </Link>
-        <Link href={'#'} passHref>
+        <Link href={'/requests'} passHref>
           <MenuItem style={{ pointerEvents: 'none' }}>
             <Image
               src={'/assets/images/Broadcasts.png'}
