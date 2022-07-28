@@ -47,10 +47,10 @@ export default function MobileStatusCard({
       {noPeerAvailable && (
         <ReferSubtitle>
           Invite them to try{' '}
-          <a href="https://daopanel.chat" target="_blank" rel="noreferrer">
-            daopanel.chat
+          <a href="https://relay.cc" target="_blank" rel="noreferrer">
+            Relay
           </a>{' '}
-          or test it out by messaging the daopanel founder{' '}
+          or test it out by messaging the Relay founder{' '}
           <Link href={'/seanwbren.eth'} passHref>
             <h6>seanwbren.eth</h6>
           </Link>

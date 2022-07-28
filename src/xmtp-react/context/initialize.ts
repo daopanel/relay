@@ -29,6 +29,7 @@ export const initialize = async (
     try {
       client = await Client.create(wallet, {
         codecs: [gmc],
+        env: 'production',
       });
       onClientConnect(client);
     } catch (err) {
