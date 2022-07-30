@@ -6,15 +6,17 @@ import { useRouter } from 'next/router';
 import Avatar from './Avatar';
 // import MobileLoadingText from 'components/MobileLoadingText';
 import { shortDate } from 'utils/date';
-import { useGroupMessages } from 'xmtp-react/groups';
+import { Group, useGroupMessages } from 'xmtp-react/groups';
+import { getLastMessage } from 'xmtp-react/conversations';
 
 interface GroupConversationProps {
   groupId: string;
+  group: Group;
 }
 
 export default function GroupConversation(props: GroupConversationProps) {
   const messages = useGroupMessages(props.groupId);
-  const lastMessage = Object.values(messages)[0];
+  const lastMessage = getLastMessage(messages);
   const router = useRouter();
 
   const goToConversation = useCallback(() => {
@@ -28,7 +30,10 @@ export default function GroupConversation(props: GroupConversationProps) {
           <Avatar address={props.groupId} />
         </div>
         <div>
-          <StyledTitle tag="span" text={props.groupId} />
+          <StyledTitle
+            tag="span"
+            text={props.group.defaultAlias || props.groupId}
+          />
           <StyledSubTitle
             tag="span"
             text={previewMessage(`${lastMessage?.content.payload}`)}

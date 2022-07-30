@@ -6,7 +6,7 @@ import MobileConversationsHeader from './MobileConversationsHeader';
 import MobileMenu from './MobileMenu';
 import MobileStatusCard from './MobileStatusCard';
 import MobileLoadingConversations from './MobileLoadingPage';
-import { useGroups, createGroup } from 'xmtp-react';
+import { useGroups, createGroup, Group } from 'xmtp-react';
 import GroupConversation from './GroupConversation';
 import { CreateGroupModal } from './CreateGroupModal';
 import { useRouter } from 'next/router';
@@ -36,12 +36,16 @@ export default function GroupConversations() {
     setShowNewConversation(false);
   }, []);
 
-  const handleCreateGroup = async (peerAddresses: string[]) => {
+  const handleCreateGroup = async (
+    defaultAlias: string,
+    peerAddresses: string[]
+  ) => {
     if (xmtp.status === Status.ready) {
       try {
         const groupId = await createGroup(
           xmtp.client,
           peerAddresses,
+          defaultAlias,
           `Created at datetime: ${new Date()}`
         );
         router.push('/g/' + groupId);
@@ -131,14 +135,36 @@ export default function GroupConversations() {
       {xmtp.status === Status.loading && <MobileLoadingConversations />}
       {xmtp.status === Status.ready && (
         <List isMobile={isMobile}>
-          {Object.keys(groups).map((groupId: string) => {
-            return <GroupConversation key={groupId} groupId={groupId} />;
-          })}
+          {sortByLastMessageTime(groups, xmtp.activity).map(
+            (groupId: string) => {
+              return (
+                <GroupConversation
+                  key={groupId}
+                  groupId={groupId}
+                  group={groups[groupId]}
+                />
+              );
+            }
+          )}
         </List>
       )}
     </Page>
   );
 }
+
+const sortByLastMessageTime = (
+  groups: Record<string, Group>,
+  activity: Record<string, Date | undefined>
+): string[] => {
+  const ids = Object.keys(groups);
+  return ids.sort((a, b) => {
+    const tA = activity[a] || -Infinity;
+    const tB = activity[b] || -Infinity;
+    if (tA === tB) return 0;
+    if (tA > tB) return -1;
+    return 1;
+  });
+};
 
 const MissingConversations = styled.div`
   margin-top: 1rem;

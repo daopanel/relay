@@ -136,13 +136,29 @@ export const XmtpContextProvider: FunctionComponent<{
 
   const handleNewGroupMessage = useCallback(
     (message: GroupMessage) => {
-      return setGroupMessages((prev) => {
-        prev[message.content.groupId] = prev[message.content.groupId] || {};
-        prev[message.content.groupId][message.content.groupMessageId] = message;
-        return prev;
-      });
+      const { sent } = message;
+      if (sent === undefined) {
+        return;
+      } else {
+        setActivity((prev) => {
+          if (prev[message.content.groupId] === undefined) {
+            prev[message.content.groupId] = sent;
+          } else {
+            if (prev[message.content.groupId].getTime() < sent.getTime()) {
+              prev[message.content.groupId] = sent;
+            }
+          }
+          return prev;
+        });
+        return setGroupMessages((prev) => {
+          prev[message.content.groupId] = prev[message.content.groupId] || {};
+          prev[message.content.groupId][message.content.groupMessageId] =
+            message;
+          return prev;
+        });
+      }
     },
-    [setGroupMessages]
+    [setGroupMessages, setActivity]
   );
 
   /*

@@ -4,6 +4,7 @@ import { v4 as uuid } from 'uuid';
 export interface GroupMessageContent {
   groupId: string;
   groupMessageId: string;
+  defaultAlias?: string;
   participantAddresses: string[];
   payload: string;
 }
@@ -19,12 +20,19 @@ export const isGroupMessageContent = (
   content: unknown
 ): content is GroupMessageContent => {
   try {
-    const { groupId, groupMessageId, participantAddresses, payload } =
-      content as GroupMessageContent;
+    const {
+      groupId,
+      groupMessageId,
+      participantAddresses,
+      payload,
+      defaultAlias,
+    } = content as GroupMessageContent;
 
     if (!(typeof groupId === 'string')) return false;
     if (!(typeof groupMessageId === 'string')) return false;
     if (!(typeof payload === 'string')) return false;
+    if (!(defaultAlias === undefined || typeof defaultAlias === 'string'))
+      return false;
     if (
       !participantAddresses.every((pa) => {
         // TODO Do real address validation.
@@ -47,6 +55,7 @@ export const fromGroupAndPayload = (
 ): GroupMessageContent => {
   return {
     groupId: group.id,
+    defaultAlias: group.defaultAlias,
     groupMessageId: uuid(),
     participantAddresses: group.participantAddresses,
     payload,

@@ -6,7 +6,7 @@ import Image from 'next/image';
 export interface CreateGroupModalProps {
   isOpen: boolean;
   onRequestClose: () => unknown;
-  onCreateGroup: (peerAddresses: string[]) => unknown;
+  onCreateGroup: (defaultAlias: string, peerAddresses: string[]) => unknown;
 }
 
 export const CreateGroupModal: FunctionComponent<CreateGroupModalProps> = ({
@@ -16,6 +16,7 @@ export const CreateGroupModal: FunctionComponent<CreateGroupModalProps> = ({
 }) => {
   const [inputValue, setInputValue] = useState<string>('');
   const [peerAddresses, setPeerAddresses] = useState<Set<string>>(new Set());
+  const [defaultAlias, setDefaultAlias] = useState<string>('');
 
   const addPeerAddress = (peerAddress: string) => {
     setPeerAddresses((prev) => {
@@ -36,6 +37,7 @@ export const CreateGroupModal: FunctionComponent<CreateGroupModalProps> = ({
   const handleClose = () => {
     onRequestClose();
     setPeerAddresses(new Set());
+    setDefaultAlias('');
     setInputValue('');
   };
 
@@ -64,6 +66,17 @@ export const CreateGroupModal: FunctionComponent<CreateGroupModalProps> = ({
           />
         </ModalClose>
       </ModalHeader>
+      <ModalFormTitle>GROUP NAME</ModalFormTitle>
+      <ModalFormItem>
+        <AddAddressInput
+          value={defaultAlias}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+            setDefaultAlias(e.target.value);
+          }}
+          placeholder="Enter Group Name..."
+          spellCheck={false}
+        />
+      </ModalFormItem>
       <ModalFormTitle>ADD ADDRESSES</ModalFormTitle>
       <ModalForm
         onSubmit={(e: FormEvent<HTMLFormElement>) => {
@@ -112,8 +125,14 @@ export const CreateGroupModal: FunctionComponent<CreateGroupModalProps> = ({
       )}
       <Buttons>
         <ModalButton
-          onClick={() => onCreateGroup(Array.from(peerAddresses))}
-          disabled={peerAddresses.size < 1}>
+          onClick={() => {
+            if (defaultAlias.length === 0) {
+              return;
+            } else {
+              onCreateGroup(defaultAlias, Array.from(peerAddresses));
+            }
+          }}
+          disabled={peerAddresses.size < 1 || defaultAlias.length === 0}>
           Create Group
         </ModalButton>
         <ModalCancel onClick={handleClose}>Cancel</ModalCancel>
