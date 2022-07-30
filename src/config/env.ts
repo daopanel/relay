@@ -1,40 +1,39 @@
-const MAIN_BRANCH = 'main';
-const DEVELOP_BRANCH = 'develop';
+// Environment Breakdown because the naming is confusing
+//
+// * Dev (npm run dev, local development)
+// * Prod (npm run build)
+//   * Relay (public site on XMTP production network)
+//   * Relay Dev (public site on XMTP dev network)
+//   * Preview (preview envs deployed by Vercel)
+//   * Local (npm run build executed locally)
 
-export class Env {
-  public static isMain() {
-    return Env.branch() === MAIN_BRANCH;
-  }
+export const isDev = process.env.NODE_ENV === 'development';
+export const isProd = process.env.NODE_ENV === 'production';
+export const isRelayProd = Boolean(process.env.NEXT_PUBLIC_IS_RELAY_PROD);
+export const isRelayDev = Boolean(process.env.NEXT_PUBLIC_IS_RELAY_DEV);
+export const isPreview = process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview';
+export const isLocal = Boolean(process.env.IS_LOCAL_PROD);
 
-  public static isDevelop() {
-    return Env.branch() === DEVELOP_BRANCH;
-  }
+let envCount = 0;
+isDev && envCount++;
+isRelayProd && envCount++;
+isRelayDev && envCount++;
+isPreview && envCount++;
+isLocal && envCount++;
 
-  public static isLocal() {
-    return !(Env.isMain() || Env.isDevelop());
-  }
+let prodEnvCount = 0;
+isRelayProd && prodEnvCount++;
+isRelayDev && prodEnvCount++;
+isPreview && prodEnvCount++;
+isLocal && prodEnvCount++;
 
-  public static branch() {
-    return process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF;
-  }
-
-  public static author() {
-    return process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_AUTHOR_LOGIN;
-  }
-
-  public static domain() {
-    if (Env.isMain()) return 'daopanel.chat';
-    if (Env.isDevelop()) return 'devpanel.chat';
-    return 'localhost:3000';
-  }
-
-  public static toString() {
-    return `
-      isMain: ${Env.isMain()}
-      isDevelop: ${Env.isDevelop()}
-      isLocal: ${Env.isLocal()}
-      branch: ${Env.branch()}
-      author: ${Env.author()}
-    `;
-  }
+if (envCount > 1) {
+  throw new Error(
+    'More than 1 of isDev, isRelayProd, isRelayDev, isPreview, isLocal is true!'
+  );
+}
+if (isProd && prodEnvCount === 0) {
+  throw new Error(
+    'isProd is true but isRelayProd, isRelayDev, isPreview, and isLocal are all false!'
+  );
 }

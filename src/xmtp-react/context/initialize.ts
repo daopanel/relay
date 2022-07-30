@@ -4,8 +4,11 @@ import { Signer } from 'ethers';
 
 const gmc = new GroupMessageCodec();
 
+export type XmtpNetwork = 'dev' | 'production';
+
 export const initialize = async (
   wallet: Signer,
+  network: XmtpNetwork,
   onWaitingForSignature: () => unknown,
   onClientConnect: (client: Client) => unknown,
   onClientError: (error: unknown) => unknown,
@@ -29,7 +32,7 @@ export const initialize = async (
     try {
       client = await Client.create(wallet, {
         codecs: [gmc],
-        env: 'production',
+        env: network,
       });
       onClientConnect(client);
     } catch (err) {

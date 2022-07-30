@@ -1,4 +1,4 @@
-import { Env } from './env';
+import { isRelayProd, isRelayDev } from './env';
 
 export class Plausible {
   public static enabled() {
@@ -7,8 +7,10 @@ export class Plausible {
   }
 
   public static domain() {
-    if (Env.isMain()) return 'daopanel.chat';
-    if (Env.isDevelop()) return 'devpanel.chat';
+    // TODOD The domains in plausible don't match the current domains, maybe there is
+    // a way to fix that.
+    if (isRelayProd) return 'daopanel.chat';
+    if (isRelayDev) return 'devpanel.chat';
     return 'daopanel.local';
   }
 
