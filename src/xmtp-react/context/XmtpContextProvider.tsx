@@ -9,14 +9,15 @@ import React, {
 import { Client, Conversation, Message } from '@xmtp/xmtp-js';
 import { Signer } from 'ethers';
 import { Status, XmtpContext } from './XmtpContext';
-import { initialize } from './initialize';
+import { initialize, XmtpNetwork } from './initialize';
 import { useSigner } from 'wagmi';
 import { GroupMessage, GroupMessageDecodeError } from '../groups';
 import { useImmer } from 'use-immer';
 
 export const XmtpContextProvider: FunctionComponent<{
   children: React.ReactNode;
-}> = ({ children }) => {
+  xmtpNetwork: XmtpNetwork;
+}> = ({ children, xmtpNetwork }) => {
   /*
    * Hooks
    */
@@ -166,6 +167,7 @@ export const XmtpContextProvider: FunctionComponent<{
     } else {
       await initialize(
         wallet,
+        xmtpNetwork,
         handleClientWaitingForSignature,
         handleClientConnect,
         handleClientError,
@@ -179,6 +181,7 @@ export const XmtpContextProvider: FunctionComponent<{
     }
   }, [
     wallet,
+    xmtpNetwork,
     handleClientWaitingForSignature,
     handleClientConnect,
     handleClientError,
